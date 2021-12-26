@@ -15,7 +15,6 @@
 #include <cmath>
 #include <fstream>
 
-
 using std::cin;
 using std::cout;
 using std::endl;
@@ -25,8 +24,8 @@ using std::fstream;
 
 const int MaxLen = 65;
 const int MaxBlockLen = 1000;
-const int ApartLen = 3 * MaxBlockLen / 2;
-const int MergeLen = MaxBlockLen / 2;
+const int ApartLen = 1500;
+const int MergeLen = 500;
 
 template<class T, int info_len = 2>
 class MemoryRiver {//一个MemoryRiver 对应一个文件
@@ -52,6 +51,17 @@ public:
         }
         file.close();
     }
+
+    /*
+    void initialise(string FN = "") {
+        if (FN != "") file_name = FN;
+        file.open(file_name, std::ios::out);
+        int tmp = 0;
+        for (int i = 0; i < info_len; ++i)
+            file.write(reinterpret_cast<char *>(&tmp), sizeof(int));
+        file.close();
+    }
+     */
 
     //读出第n个int的值赋给tmp，1_base
     void get_info(int& tmp, int n) {
@@ -80,8 +90,8 @@ public:
         /* your code here */
         int index;
         int num_T, del_head;
-        (*this).get_info(num_T, 1);
-        (*this).get_info(del_head, 2);
+        get_info(num_T, 1);
+        get_info(del_head, 2);
         if(!del_head)//在文件尾部加
             index = info_len * sizeof(int) + num_T * sizeofT;
         else {//在释放掉的空间加
@@ -89,13 +99,14 @@ public:
             file.open(file_name);
             file.seekg(del_head);
             file.read(reinterpret_cast<char*>(&del_head), sizeof(int));
-            (*this).write_info(del_head, 2);//更新 del_head 的值
             file.close();
         }
         file.open(file_name);
         file.seekp(index);
         file.write(reinterpret_cast<char*>(&t), sizeofT);
         file.close();
+        write_info(++num_T, 1);
+        write_info(del_head, 2);//更新 del_head 的值
         return index;
     }
 
@@ -120,14 +131,14 @@ public:
     //删除位置索引index对应的对象(不涉及空间回收时，可忽略此函数)，保证调用的index都是由write函数产生
 
     void Delete(int index) {//放入vector中
-
         int del_head;
+        get_info(del_head, 2);
         file.open(file_name);
         file.seekp(index);
         file.write(reinterpret_cast<char*>(&del_head), sizeof(int));
         del_head = index;
-        (*this).write_info(del_head, 2);
         file.close();
+        write_info(del_head, 2);
     }
 };
 
@@ -191,7 +202,7 @@ private:
     //将一个块状链表与一个 MemoryRiver 类关联
     MemoryRiver<Block> Blocks;
 public:
-    BlockList(){};
+    BlockList() = default;
     BlockList(const string& name):Blocks(name){}
     void Insert(const Node& tmp){
         int num, fpos;
@@ -203,13 +214,11 @@ public:
             new_block.array[0] = tmp;
             new_block.pos = Blocks.write(new_block);//将该块写入文件
             Blocks.update(new_block, new_block.pos);
-            num++;
-            Blocks.write_info(num, 1);//改变块数
         }
         else{//读取所在的块,注意边界情况的处理,比如说:最小的pair, 与最大的pair
             Block tmp_block;
             int cnt = 0;
-            for(int i = fpos; i;){
+            for(int i = fpos; i; i = tmp_block.nxt_index){
                 cnt++;
                 Blocks.read(tmp_block, i);
                 if( tmp < tmp_block.array[tmp_block.size - 1] || cnt == num){//读到这个Block里面
@@ -222,10 +231,20 @@ public:
                     Blocks.update(tmp_block, i);
                     break;
                 }
-                i = tmp_block.nxt_index;
             }
             if(tmp_block.size >= ApartLen){//触发分裂
                 Split(tmp_block.pos);
+            }
+        }
+    }
+    void FindAll(vector<int>& ans){
+        int num, fpos = 8;
+        Blocks.get_info(num, 1);
+        Block tmp_block;
+        for(int i = fpos; i; i = tmp_block.nxt_index){
+            Blocks.read(tmp_block, i);
+            for(int j = 0; j < tmp_block.size; ++j){
+                ans.push_back(tmp_block.array[j].value);
             }
         }
     }
@@ -254,10 +273,9 @@ public:
         int num, fpos = 8;
         Blocks.get_info(num, 1);
         Block tmp_block;
-        for(int i = fpos; i;){
+        for(int i = fpos; i; i = tmp_block.nxt_index){
             Blocks.read(tmp_block, i);
             if(tmp < tmp_block.array[0] || tmp > tmp_block.array[tmp_block.size - 1]){//不在该块中
-                i = tmp_block.nxt_index;
                 continue;
             }
             else{//可能在该块中
@@ -272,7 +290,6 @@ public:
                     }
                     else if(tmp_block.array[j] > tmp) break;
                 }
-                i = tmp_block.nxt_index;
                 continue;
             }
         }
@@ -281,8 +298,6 @@ public:
         Block tmp_block, new_block;
         int org_size, num;
         Blocks.get_info(num, 1);
-        num++;
-        Blocks.write_info(num, 1);
         Blocks.read(tmp_block, pos);
         org_size = tmp_block.size;
         tmp_block.size /= 2;
@@ -301,8 +316,6 @@ public:
         Block tmp_block, pre_block, nxt_block;
         int num, org_size;
         Blocks.get_info(num, 1);
-        num--;
-        Blocks.write_info(num, 1);
         Blocks.read(tmp_block, pos);
         Blocks.read(pre_block, tmp_block.pre_index);
         if(tmp_block.nxt_index){//如果不是尾结点

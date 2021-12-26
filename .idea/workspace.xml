@@ -24,6 +24,17 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Books.h" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="22AMR0IDC4eAAn8C4XXYSMC0t2d" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -37,9 +48,10 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../homework6" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/testcase6_ans.txt" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/3.ans" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/testcase6_ans.txt" />
   </component>
   <component name="RunManager">
     <configuration name="Bookstore" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Bookstore" TARGET_NAME="Bookstore" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Bookstore" RUN_TARGET_NAME="Bookstore">
@@ -47,9 +59,9 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -80,6 +92,11 @@
       <workItem from="1639817115210" duration="10144000" />
       <workItem from="1640162596528" duration="3034000" />
       <workItem from="1640170203133" duration="8740000" />
+      <workItem from="1640261197973" duration="5318000" />
+      <workItem from="1640400477540" duration="9169000" />
+      <workItem from="1640422172705" duration="11422000" />
+      <workItem from="1640486708011" duration="5747000" />
+      <workItem from="1640499455723" duration="8158000" />
     </task>
     <servers />
   </component>
@@ -87,30 +104,14 @@
     <option name="version" value="3" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>13</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>14</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Account.h</url>
-          <line>125</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="Log_Stack" language="ObjectiveC" />
         <watch expression="tmp_ID.c_str()" language="ObjectiveC" />
         <watch expression="Pars_Op" language="ObjectiveC" />
+        <watch expression="new_account" language="ObjectiveC" />
+        <watch expression="pos" language="ObjectiveC" />
+        <watch expression="cmd" language="ObjectiveC" />
       </configuration>
     </watches-manager>
   </component>

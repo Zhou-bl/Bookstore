@@ -39,6 +39,10 @@ string
 -
 vector
 -
+cstdio
+-
+iomanip
+-
 
 /mnt/d/周秉霖/Bookstore/Command.h
 iostream
@@ -53,20 +57,18 @@ Account.h
 /mnt/d/周秉霖/Bookstore/Account.h
 Books.h
 /mnt/d/周秉霖/Bookstore/Books.h
+Log.h
+/mnt/d/周秉霖/Bookstore/Log.h
+
+/mnt/d/周秉霖/Bookstore/Log.h
+iostream
+-
+iomanip
+-
 
 /mnt/d/周秉霖/Bookstore/main.cpp
 iostream
 -
-vector
--
-algorithm
--
-cstring
--
-fstream
--
 Command.h
 /mnt/d/周秉霖/Bookstore/Command.h
-Blocks.h
-/mnt/d/周秉霖/Bookstore/Blocks.h
 
