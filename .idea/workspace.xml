@@ -101,7 +101,7 @@
       <workItem from="1640499455723" duration="9920000" />
       <workItem from="1640513983798" duration="319000" />
       <workItem from="1640514315590" duration="30000" />
-      <workItem from="1640514390860" duration="6429000" />
+      <workItem from="1640514390860" duration="8851000" />
     </task>
     <servers />
   </component>
@@ -112,10 +112,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <condition expression="cnt == 4" language="ObjectiveC" />
-          <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>12</line>
-          <option name="timeStamp" value="8" />
+          <url>file://$PROJECT_DIR$/Books.h</url>
+          <line>247</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -128,6 +127,7 @@
         <watch expression="pos" language="ObjectiveC" />
         <watch expression="cmd" language="ObjectiveC" />
         <watch expression="Selected" language="ObjectiveC" />
+        <watch expression="tmp_block" language="ObjectiveC" />
       </configuration>
     </watches-manager>
   </component>
