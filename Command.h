@@ -88,13 +88,15 @@ public:
 //        AccountSystem.Get_Size();
         if(Pars_Op[0] == " " && Pars_Op.size() == 1)//仅有空白的指令是合法的
             return;
-        if(Pars_Op[0] == "quit"){
-            //todo:退出登录
-            return;
-        }
-        if(Pars_Op[0] == "exit"){
-            //todo
-            return;
+        if(Pars_Op[0] == "quit" || Pars_Op[0] == "exit"){
+            if(Pars_Op.size() > 1){
+                cout << "Invalid" << endl;
+                return;
+            }
+            else{
+                AccountSystem.Quit();
+                return;
+            }
         }
 
         // #账户系统指令

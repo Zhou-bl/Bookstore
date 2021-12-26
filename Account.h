@@ -55,6 +55,10 @@ public:
         if(Log_Stack.empty()) return 0;
         return Log_Stack.back().Priority;
     }
+    void Quit(){
+        while(!Log_Stack.empty())
+            Log_Stack.pop_back();
+    }
     void Login(const string& tmp_ID, const string& tmp_Password){
         //0
         vector<int> tmp;

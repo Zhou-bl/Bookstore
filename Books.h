@@ -121,7 +121,8 @@ public:
         vector<int> ans;
         ISBN_Index.FindAll(ans);
         Book tmp_book;
-        if(ans.empty()){////不输出任何字符
+        if(ans.empty()){//输出空行
+            cout << endl;
             return;
         }
         else{
@@ -162,7 +163,8 @@ public:
         if(index == "-name") {Name_Index.Find(imf, ans);}
         if(index == "-author") {Author_Index.Find(imf, ans);}
         if(index == "-keyword") {Keyword_Index.Find(imf, ans);}
-        if(ans.empty()){////不输出任何字符
+        if(ans.empty()){//输出空行
+            cout << endl;
             return;
         }
         else{
