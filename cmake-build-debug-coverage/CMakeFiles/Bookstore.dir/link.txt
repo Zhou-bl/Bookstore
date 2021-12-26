@@ -1,0 +1,1 @@
+/usr/bin/c++  --coverage -fsanitize=undefined -fsanitize=address -fsanitize=leak -g   CMakeFiles/Bookstore.dir/main.cpp.o  -o Bookstore 

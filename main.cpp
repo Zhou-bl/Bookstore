@@ -1,11 +1,13 @@
 #include <iostream>
-#include <string>
+#include <cstdio>
+#include <cstring>
+#include <algorithm>
 #include "Command.h"
-using std::string;
+using namespace std;
 int main(){
 //    freopen("testcase6.txt","r",stdin);
 //    freopen("Myans.txt","w",stdout);
-    Command System;
+    Command BookstoreSystem;
     string cmd;
 
 //    int cnt = 0;
@@ -18,9 +20,9 @@ int main(){
             cout << "Invalid" << endl;
             continue;
         }
-        System.pre(cmd);
-        System.get_cmd(cmd);
-        System.run();
+        BookstoreSystem.pre(cmd);
+        BookstoreSystem.get_cmd(cmd);
+        BookstoreSystem.run();
     }
     return 0;
 }

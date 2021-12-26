@@ -8,6 +8,7 @@
   <component name="CMakeSettings">
     <configurations>
       <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+      <configuration PROFILE_NAME="Debug-Coverage" ENABLED="true" CONFIG_NAME="Debug" GENERATION_OPTIONS="-DCMAKE_CXX_FLAGS=--coverage -DCMAKE_C_FLAGS=--coverage" />
     </configurations>
   </component>
   <component name="ChangeListManager">
@@ -101,34 +102,17 @@
       <workItem from="1640499455723" duration="9920000" />
       <workItem from="1640513983798" duration="319000" />
       <workItem from="1640514315590" duration="30000" />
-      <workItem from="1640514390860" duration="8851000" />
+      <workItem from="1640514390860" duration="10172000" />
+      <workItem from="1640528021777" duration="2073000" />
+      <workItem from="1640531038212" duration="166000" />
+      <workItem from="1640531219617" duration="776000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Books.h</url>
-          <line>247</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-    <watches-manager>
-      <configuration name="CMakeRunConfiguration">
-        <watch expression="Log_Stack" language="ObjectiveC" />
-        <watch expression="tmp_ID.c_str()" language="ObjectiveC" />
-        <watch expression="Pars_Op" language="ObjectiveC" />
-        <watch expression="new_account" language="ObjectiveC" />
-        <watch expression="pos" language="ObjectiveC" />
-        <watch expression="cmd" language="ObjectiveC" />
-        <watch expression="Selected" language="ObjectiveC" />
-        <watch expression="tmp_block" language="ObjectiveC" />
-      </configuration>
-    </watches-manager>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="D:\周秉霖\Bookstore\cmake-build-debug-coverage" NAME="Bookstore Coverage Results" MODIFIED="1640529296767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="gcov/llvm" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
