@@ -255,7 +255,7 @@ public:
                 return;
             }
             else{
-                int pos = old_ans[0];
+                int pos = old_ans[0];////数组越界
                 Selected.Change_ISBN(new_imf);
                 Book_Data.update(Selected, pos);
                 ISBN_Index.Delete(Node(old_isbn, pos));

@@ -82,21 +82,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/mnt/d/周秉霖/Bookstore/Account.h">
-			<Option target="Bookstore"/>
-		</Unit>
-		<Unit filename="/mnt/d/周秉霖/Bookstore/Blocks.h">
-			<Option target="Bookstore"/>
-		</Unit>
-		<Unit filename="/mnt/d/周秉霖/Bookstore/Books.h">
-			<Option target="Bookstore"/>
-		</Unit>
-		<Unit filename="/mnt/d/周秉霖/Bookstore/Command.h">
-			<Option target="Bookstore"/>
-		</Unit>
-		<Unit filename="/mnt/d/周秉霖/Bookstore/Log.h">
-			<Option target="Bookstore"/>
-		</Unit>
 		<Unit filename="/mnt/d/周秉霖/Bookstore/main.cpp">
 			<Option target="Bookstore"/>
 		</Unit>

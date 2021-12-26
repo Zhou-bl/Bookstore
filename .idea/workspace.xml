@@ -45,7 +45,7 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/CMakeLists.txt" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/testcase6_ans.txt" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/testcase6_ans.txt" />
@@ -56,7 +56,7 @@
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Bookstore" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$PROJECT_DIR$/src" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Bookstore" TARGET_NAME="Bookstore" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Bookstore" RUN_TARGET_NAME="Bookstore">
+    <configuration name="Bookstore" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Bookstore" TARGET_NAME="Bookstore" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Bookstore" RUN_TARGET_NAME="Bookstore">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -101,7 +101,7 @@
       <workItem from="1640499455723" duration="9920000" />
       <workItem from="1640513983798" duration="319000" />
       <workItem from="1640514315590" duration="30000" />
-      <workItem from="1640514390860" duration="726000" />
+      <workItem from="1640514390860" duration="6429000" />
     </task>
     <servers />
   </component>
@@ -109,6 +109,16 @@
     <option name="version" value="3" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <condition expression="cnt == 4" language="ObjectiveC" />
+          <url>file://$PROJECT_DIR$/main.cpp</url>
+          <line>12</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="Log_Stack" language="ObjectiveC" />

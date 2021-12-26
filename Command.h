@@ -44,7 +44,7 @@ public:
 
         //2.不全为空白，需要处理行首行末的空格以及多余的空格
         int len = cmd.length(), l, r;
-        bool* book = new bool [len];
+        bool *book = new bool[len];
         for(int i = 0; i < len; ++i)
             book[i] = 0;
         for(int i = 0; i < len; ++i)
@@ -57,7 +57,7 @@ public:
                 r = i;
                 break;
             }
-        for(int i = l; i <= r; ++i)
+        for(int i = l + 1; i <= r; ++i)
             if(cmd[i] == ' ' && cmd[i - 1] == ' '){
                 book[i] = 1;
             }
@@ -86,7 +86,11 @@ public:
     void run(){//解析完命令开始运行命令
         // #基础指令
 //        AccountSystem.Get_Size();
-        if(Pars_Op[0] == " " && Pars_Op.size() == 1)//仅有空白的指令是合法的
+        if(Pars_Op.size() == 0){
+            cout << "Invalid" << endl;
+            return;
+        }
+        if(Pars_Op.size() == 1 && Pars_Op[0] == " ")//仅有空白的指令是合法的
             return;
         if(Pars_Op[0] == "quit" || Pars_Op[0] == "exit"){
             if(Pars_Op.size() > 1){

@@ -221,7 +221,27 @@ public:
             for(int i = fpos; i; i = tmp_block.nxt_index){
                 cnt++;
                 Blocks.read(tmp_block, i);
-                if( tmp < tmp_block.array[tmp_block.size - 1] || cnt == num){//读到这个Block里面
+                if(!tmp_block.size){//对于空块特判即可
+                    if(cnt == num){//最后一块的情况
+                        tmp_block.array[0] = tmp;
+                        tmp_block.size++;
+                        Blocks.update(tmp_block, i);
+                        return;
+                    }
+                    else{
+                        int nxt_pos = tmp_block.nxt_index;
+                        Block nxt_block;
+                        Blocks.read(nxt_block, nxt_pos);
+                        if(nxt_block.size && tmp < nxt_block.array[0]){
+                            tmp_block.array[0] = tmp;
+                            tmp_block.size++;
+                            Blocks.update(tmp_block, i);
+                            return;
+                        }
+                        continue;
+                    }
+                }
+                if( cnt == num || tmp < tmp_block.array[tmp_block.size - 1]){//读到这个Block里面
                     int it = std::lower_bound(tmp_block.array, tmp_block.array + tmp_block.size, tmp) - tmp_block.array;
                     for(int j = tmp_block.size; j > it; --j){
                         tmp_block.array[j] = tmp_block.array[j - 1];
@@ -254,7 +274,12 @@ public:
         Block tmp_block;
         for(int i = fpos; i;){
             Blocks.read(tmp_block, i);
+            if(!tmp_block.size){
+                i = tmp_block.nxt_index;
+                continue;
+            }
             if(TmpK < tmp_block.array[0].key) break;//太大,则break;
+//            cout << "Hello : in Blocks.h 258 " << tmp_block.size << endl;
             if(TmpK > tmp_block.array[tmp_block.size - 1].key){//太小,则continue;
                 i = tmp_block.nxt_index;
                 continue;
@@ -275,6 +300,9 @@ public:
         Block tmp_block;
         for(int i = fpos; i; i = tmp_block.nxt_index){
             Blocks.read(tmp_block, i);
+            if(!tmp_block.size){
+                continue;
+            }
             if(tmp < tmp_block.array[0] || tmp > tmp_block.array[tmp_block.size - 1]){//不在该块中
                 continue;
             }
