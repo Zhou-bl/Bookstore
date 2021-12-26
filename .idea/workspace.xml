@@ -48,10 +48,10 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/testcase6_ans.txt" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/testcase5_ans.txt" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/testcase6_ans.txt" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/testcase5_ans.txt" />
   </component>
   <component name="RunManager">
     <configuration name="Bookstore" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Bookstore" TARGET_NAME="Bookstore" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Bookstore" RUN_TARGET_NAME="Bookstore">
@@ -96,7 +96,7 @@
       <workItem from="1640400477540" duration="9169000" />
       <workItem from="1640422172705" duration="11422000" />
       <workItem from="1640486708011" duration="5747000" />
-      <workItem from="1640499455723" duration="8158000" />
+      <workItem from="1640499455723" duration="8469000" />
     </task>
     <servers />
   </component>
@@ -104,6 +104,15 @@
     <option name="version" value="3" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Books.h</url>
+          <line>317</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="Log_Stack" language="ObjectiveC" />
@@ -112,6 +121,7 @@
         <watch expression="new_account" language="ObjectiveC" />
         <watch expression="pos" language="ObjectiveC" />
         <watch expression="cmd" language="ObjectiveC" />
+        <watch expression="Selected" language="ObjectiveC" />
       </configuration>
     </watches-manager>
   </component>
