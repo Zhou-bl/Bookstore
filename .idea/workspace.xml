@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
-    <generated />
+    <generated>
+      <config projectName="Bookstore" targetName="Bookstore" />
+    </generated>
   </component>
   <component name="CMakeSettings">
     <configurations>
@@ -18,6 +20,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -98,7 +101,7 @@
       <workItem from="1640499455723" duration="9920000" />
       <workItem from="1640513983798" duration="319000" />
       <workItem from="1640514315590" duration="30000" />
-      <workItem from="1640514390860" duration="29000" />
+      <workItem from="1640514390860" duration="726000" />
     </task>
     <servers />
   </component>
