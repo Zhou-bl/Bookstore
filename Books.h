@@ -30,6 +30,9 @@ public:
     Book() = default;
     Book(string tmp_ISBN){
         strcpy(ISBN, tmp_ISBN.c_str());
+        Quantity = 0;
+        Price = 0;
+        Book_Name[0] = Author[0] = Keyword[0] ='\0';
     }
     int Get_Num(){
         return Quantity;
@@ -184,7 +187,7 @@ public:
         }
     }
     bool Buy(Account_System& tmp_account, const string tmp_ISBN, const int& tmp_q, double& tot){
-        if(tmp_account.Get_Now_Pri() < 1 || Selected.Get_ISBN() == ""){
+        if(tmp_account.Get_Now_Pri() < 1){
             cout << "Invalid" << endl;
             return false;
         }

@@ -75,10 +75,6 @@ iostream
 -
 cstdio
 -
-cstring
--
-algorithm
--
 Command.h
 /mnt/d/周秉霖/Bookstore/Command.h
 

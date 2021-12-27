@@ -1,115 +1,110 @@
 su root sjtu
-select 978-1-972437-83-4
-modify -name="lime" -author="MonicaZavala" -keyword="withheld|lordosis|Watkins" -price=83.16
-select 978-1-972437-83-4
-modify -name="pastor" -author="NathanielOdom" -price=264.45
-passwd root RkLFx9MgS77UoZaZDG62XxYiqj
-import 7 1860.11
-passwd root PKX4ga2
-import 3 334.11
-import 20 132.62
-useradd UIrD rIKN1Ab7TI6yRrkJ 3 ShannonJohnson
 logout
-su UIrD rIKN1Ab7TI6yRrkJ
+su root sjtu
+passwd root xz5ZLqMiBWoL
+passwd root duml_KOZe1Jn2c
+select 978-1-4393-6830-5
+modify -name="picnicking" -author="LanceReilly" -keyword="injury|Vassar|built|homologue" -price=230.25
+passwd root HVGtMnxcSarKgjBYLpz8S9EeTBg
 logout
-su root PKX4ga2
-select 978-0-346-59823-2
-modify -name="syllabic" -author="JefferyHill" -keyword="denizen|bianco" -price=340.67
-delete UIrD
-useradd 7oIKBlyCuw97mLQ6 pl3eFzsTyyraF7TDaoy7R3iPEd 3 VanessaBass
-useradd LKwFjGp3YmltgCD9q0uS5B4najrne8 OJwQF57JAlmabWu07 1 WendyYork
-useradd OUaToSqhk irhYSjtF 3 EthanWalker
-import 1 245.94
-select 978-1-261-59338-8
-modify -name="sausage" -author="RavenHancock" -keyword="lordosis|purslane" -price=416.63
-delete OUaToSqhk
-select 978-0-88211-570-2
-modify -name="category" -author="AmandaDean" -keyword="frigate|hiatus|Syria" -price=311.12
-select 978-0-346-59823-2
-modify -price=323.72
-import 19 3462.03
-useradd JVCr45Vfw9 Z 1 PatriciaHernandez
-useradd nkIt8LYyGrMvDX O 3 RobynRivas
-useradd YUIZW1qcYKCM r 3 TashaAdams
-select 978-1-4693-2357-2
-modify -name="poultry" -author="RavenHancock" -keyword="bianco" -price=342.19
+su root HVGtMnxcSarKgjBYLpz8S9EeTBg
+useradd qI5P_SIkFhrGb3LV08AR_kb2xRjHtx fY536HM4Brl 1 KathleenSparks
 logout
-select 978-1-4693-2357-2
-modify -author="RavenHancock" -price=283.30
-register zSHHShLY1OI8rEPSK_DQNwXO Y_265eernCwh MartinRodriguez
-su root PKX4ga2
+register p3GhIE8z ILMXDNk JosephMyers
+su p3GhIE8z ILMXDNk
+show -name="picnicking"
 logout
-select 978-0-04-724155-0
-modify -name="beechwood" -author="TiffanyBrown" -keyword="frigate|incessant|bianco|grandniece|purslane" -price=168.70
-select 978-1-4693-2357-2
-modify -name="coccidiosis" -author="TiffanyBrown" -keyword="tulle" -price=127.69
-select 978-1-261-59338-8
-modify -name="inapproachable" -author="MonicaZavala" -keyword="frigate|lordosis|douse" -price=456.65
-su 7oIKBlyCuw97mLQ6 pl3eFzsTyyraF7TDaoy7R3iPEd
-select 978-1-57076-066-2
-modify -name="profile" -author="RavenHancock" -keyword="bianco|hiatus" -price=245.51
-import 2 71.08
-useradd 9Ar_ezr v 1 EmilyGreen
+su p3GhIE8z ILMXDNk
+buy 978-1-4393-6830-5 1
+show -ISBN=978-1-4393-6830-5
+select 978-1-4393-6830-5
+modify -author="ElizabethOconnor"
 logout
-register OsotwBv5yNn_S8DfZAdOMed b8AMr5EwUA_JuTydTnH5ckwCb6S AmandaSantiago
-register gYW6zwXhseF88tagFjIdgkSI2Sy XWA1sC3EU_uzGqNZGy30H LoriBlackburn
-register RIX8FIqAkafjPS93y6_Sc4uOz UXxa3Jkfu ChristopherMcfarland
-select 978-1-4466-7829-9
-modify -name="sprue" -author="RavenHancock" -keyword="Syria" -price=473.74
-su 9Ar_ezr v
-buy 978-1-57076-066-2 1
+su p3GhIE8z ILMXDNk
+passwd p3GhIE8z ILMXDNk KIQkmZ
+show -ISBN=978-1-4393-6830-5
+select 978-1-4393-6830-5
+modify -author="ElizabethOconnor" -price=331.77
+buy 978-1-4393-6830-5 1
+show -keyword="homologue"
+show -author="ElizabethOconnor"
+select 978-1-4393-6830-5
+modify -author="AnthonyVillanueva" -keyword="injury|pixy|Hildebrand|Howard" -price=106.62
+buy 978-1-4393-6830-5 1
+buy 978-1-4393-6830-5 1
+select 978-1-4393-6830-5
+modify -name="bethought" -keyword="built|admonish" -price=132.35
+passwd p3GhIE8z KIQkmZ Lb
+show -name="bethought"
+buy 978-1-4393-6830-5 1
+passwd p3GhIE8z Lb zLOZmFhaxFFk2
+show -ISBN=978-1-4393-6830-5
 logout
-su root PKX4ga2
-delete YUIZW1qcYKCM
-passwd gYW6zwXhseF88tagFjIdgkSI2Sy LUkesnoxpc5ztn86tBq4w27eHFM1
-select 978-1-4693-2357-2
-import 9 968.59
-passwd zSHHShLY1OI8rEPSK_DQNwXO SvLTf
-select 978-0-641-43198-2
-modify -name="not" -author="MckenzieWhite" -keyword="Syria|tulle|frigate|hiatus" -price=359.46
-passwd LKwFjGp3YmltgCD9q0uS5B4najrne8 DNnVQjHwTvOF
-select 978-1-972437-83-4
-modify -name="Algenib" -author="RavenHancock" -price=141.68
-select 978-1-59466-314-7
-modify -name="framework" -author="MckenzieWhite" -keyword="hiatus|purslane" -price=77.27
-delete 7oIKBlyCuw97mLQ6
-useradd UlIpSmNA2O 0QcgTMJ_wj_av3l 1 MichaelOsborne
-select 978-1-972437-83-4
-modify -author="TiffanyBrown" -keyword="Syria|purslane|denizen"
-select 978-1-261-59338-8
-modify -name="Methuselah" -keyword="hiatus|grandniece|incessant|tulle|Syria" -price=250.79
+register fjFT6WkfjYQXQDVyHqTllYmrZduMg uWWBr5dhE2 MandyBurton
+register ef zbfRYcUm456HPMNZ1Cz JasonArias
+select 978-1-4662-5439-8
+modify -name="panicle" -author="JaniceHiggins" -keyword="incline|transistor" -price=460.54
+su root HVGtMnxcSarKgjBYLpz8S9EeTBg
+delete qI5P_SIkFhrGb3LV08AR_kb2xRjHtx
 logout
-register BHoe6QATTCN2dpznHX5ko5YKl IEh AprilGarcia
-su nkIt8LYyGrMvDX O
-select 978-1-57076-066-2
-modify -author="MckenzieWhite" -keyword="Syria|bianco"
-useradd TonZqtseoVxvJSZtsx3Ou cJGo6is7bLgZsV0bTkY 1 AmandaZhang
-useradd 2HqSjyyVXj1XtJn CV6zznKl8T7LaZ 1 ShannonGill
+select 978-1-5055-8808-8
+modify -name="candlewick" -author="AnthonyVillanueva" -keyword="pixy" -price=242.16
+select 978-0-08-764529-5
+modify -name="Nicholson" -author="AngelaStone" -keyword="incline|Howard|matriarchy|pixy" -price=374.73
+su p3GhIE8z zLOZmFhaxFFk2
+show -ISBN=978-1-4393-6830-5
+show -name="bethought"
+select 978-1-4393-6830-5
+modify -keyword="concentrate"
+show -keyword="concentrate"
+buy 978-1-4393-6830-5 1
+show -name="bethought"
+show -keyword="concentrate"
+select 978-1-4393-6830-5
+modify -keyword="matriarchy" -price=357.31
+buy 978-1-4393-6830-5 1
+show -author="AnthonyVillanueva"
+buy 978-1-4393-6830-5 1
+show -author="AnthonyVillanueva"
+buy 978-1-4393-6830-5 1
+buy 978-1-4393-6830-5 1
+show -name="bethought"
+buy 978-1-4393-6830-5 1
+show -author="AnthonyVillanueva"
+buy 978-1-4393-6830-5 1
+select 978-0-351-69822-4
+modify -name="martyrdom" -author="BrandonRay" -keyword="Howard|matriarchy" -price=137.91
 logout
-su UlIpSmNA2O 0QcgTMJ_wj_av3l
-buy 978-0-346-59823-2 1
-buy 978-0-88211-570-2 1
-select 978-1-261-59338-8
-modify -name="dear" -keyword="purslane|greenwood|withheld|hiatus"
-buy 978-0-88211-570-2 1
-passwd UlIpSmNA2O 0QcgTMJ_wj_av3l uD5HImkio
-show -ISBN=978-0-641-43198-2
-passwd UlIpSmNA2O uD5HImkio oXPm
-passwd UlIpSmNA2O oXPm i5dN2czJI9PpfQtI4igSJ
-show -ISBN=978-1-4693-2357-2
-select 978-1-972437-83-4
-modify -author="TiffanyBrown" -price=434.43
-show -author="MckenzieWhite"
-select 978-0-514-80251-2
-modify -name="Magdalene" -author="JefferyHill" -keyword="greenwood" -price=326.77
-buy 978-0-641-43198-2 1
+select 978-0-351-69822-4
+modify -name="Ms" -author="Dr.DustinBranchDDS"
+select 978-0-582-99824-7
+modify -name="peninsula" -author="LanceReilly" -keyword="soil|matriarchy|pixy|homologue|vast" -price=376.54
+select 978-0-8192-1251-1
+modify -name="achieve" -author="JeanneAtkinson" -keyword="matriarchy|Howard" -price=450.07
+select 978-0-351-69822-4
+modify -name="panoramic" -keyword="incline|homologue|Howard" -price=20.34
+su fjFT6WkfjYQXQDVyHqTllYmrZduMg uWWBr5dhE2
+passwd fjFT6WkfjYQXQDVyHqTllYmrZduMg uWWBr5dhE2 5iI3m
 logout
-select 978-1-57076-066-2
-modify -name="scrape" -author="JonathanAdams" -keyword="bianco|frigate|hiatus"
-select 978-1-972437-83-4
-modify -name="Thorpe" -author="ZacharySilva" -keyword="Watkins|lordosis|incessant" -price=132.79
-select 978-0-342-92615-2
-modify -name="emigree" -author="NathanielOdom" -keyword="lordosis|greenwood" -price=4.48
-su TonZqtseoVxvJSZtsx3Ou cJGo6is7bLgZsV0bTkY
-select 978-0-346-59823-2
-modify -price=382.05
+select 978-0-351-69822-4
+modify -name="rental" -author="JaniceHiggins" -price=445.48
+register SacbyhoKGtEIrYHe FUSDq3y1aj85ywM72TlJDYVCh KatherineSmith
+register aQlfeZTn 0SRlRxs_ZdA90B8cUuBJvx_ DebraGregory
+su ef zbfRYcUm456HPMNZ1Cz
+show -keyword="matriarchy"
+select 978-1-4393-6830-5
+modify -name="deceit" -author="JaniceHiggins" -keyword="matriarchy|incline|pixy|homologue" -price=283.82
+buy 978-0-351-69822-4 1
+buy 978-1-4393-6830-5 1
+buy 978-0-351-69822-4 1
+select 978-0-201-84949-3
+modify -name="Reuters" -author="AnthonyVillanueva" -keyword="matriarchy|incline|pixy" -price=437.27
+show -ISBN=978-1-4393-6830-5
+logout
+register C1AXC_OHRpGQaqFv3YOMAhkS51Ku LW4OQsW21l7BhS7tzYJ6Yfje_oK ChelseaPerez
+select 978-1-4393-6830-5
+modify -name="pretentious" -author="LanceReilly" -keyword="built|admonish|soil" -price=83.05
+register ONvuFV_gQBtr uOR3zLAdL7XjB7pqgPdvK JamesWallace
+su C1AXC_OHRpGQaqFv3YOMAhkS51Ku LW4OQsW21l7BhS7tzYJ6Yfje_oK
+logout
+register Z2_uxEotMPqSV1k_fhx m_9_gWtMW4gCno LisaGarcia
