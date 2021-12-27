@@ -195,6 +195,15 @@ public:
         }
         if(Pars_Op[0] == "modify"){
             //todo：check the invalid！！！
+            //如未选中图书则操作失败
+            //有重复附加参数为非法指令
+            //附加参数内容为空则操作失败
+            //[keyword] 包含重复信息段则操作失败
+            //与已有ISBN冲突
+            if(AccountSystem.Get_Now_Pri() < 3){
+                cout << "Invalid" << endl;
+                return;
+            }
             for(int i = 1; i < Pars_Op.size(); ++i){
                 BookSystem.Modify(AccountSystem, Pars_Op[i]);
             }

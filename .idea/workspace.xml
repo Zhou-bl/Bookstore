@@ -46,10 +46,10 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../untitled" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/1.out" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/ans.txt" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/1.out" />
   </component>
   <component name="RunManager">
     <configuration name="Bookstore" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Bookstore" TARGET_NAME="Bookstore" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Bookstore" RUN_TARGET_NAME="Bookstore">
@@ -106,12 +106,24 @@
       <workItem from="1640528021777" duration="2073000" />
       <workItem from="1640531038212" duration="166000" />
       <workItem from="1640531219617" duration="1970000" />
-      <workItem from="1640592320887" duration="3517000" />
+      <workItem from="1640592320887" duration="5738000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <condition expression="cnt == 37" language="ObjectiveC" />
+          <url>file://$PROJECT_DIR$/main.cpp</url>
+          <line>14</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="D:\周秉霖\Bookstore\cmake-build-debug-coverage" NAME="Bookstore Coverage Results" MODIFIED="1640529296767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="gcov/llvm" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

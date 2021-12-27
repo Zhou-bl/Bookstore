@@ -231,7 +231,7 @@ public:
     }
     void Modify(Account_System& tmp_account, const string& imf){
         //notice:这里的imf已经确保为单操作指令，不用考虑修改多个信息的情况
-        if(Selected.Get_ISBN() == ""){
+        if(Selected.Get_ISBN() == "" || tmp_account.Get_Now_Pri() < 3){
             cout << "Invalid" << endl;
             return;
         }
