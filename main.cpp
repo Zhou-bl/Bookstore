@@ -5,12 +5,12 @@
 #include "Command.h"
 using namespace std;
 int main(){
-//    freopen("testcase6.txt","r",stdin);
+//    freopen("11.txt","r",stdin);
 //    freopen("Myans.txt","w",stdout);
     Command BookstoreSystem;
     string cmd;
 
-//    int cnt = 0;
+    int cnt = 0;
 
     while(getline(cin, cmd)){
         //对于每一条指令，先解析，再执行

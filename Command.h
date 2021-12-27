@@ -30,7 +30,12 @@ public:
         AccountSystem.init();
     }
     void pre(string& cmd){//去除多余的空格
-        //1.若全为空白
+        //0.若为空字符串,则什么也不干
+        if(cmd == ""){
+            cmd = " ";
+            return;
+        }
+        //1.若全为空白(多个空格)
         bool Is_Blank = 1;
         for(int i = 0; i < cmd.length(); ++i)
             if(cmd[i] != ' '){
@@ -73,6 +78,10 @@ public:
         Pars_Op.clear();
         string tmp_op = "";
         int len = cmd.length();
+        if(cmd == " "){
+            Pars_Op.push_back(" ");
+            return;
+        }
         for(int i = 0; i <= len; ++i){
             if(i == len || cmd[i] == ' '){//遇到空格则取出命令
                 Pars_Op.push_back(tmp_op);
@@ -86,10 +95,6 @@ public:
     void run(){//解析完命令开始运行命令
         // #基础指令
 //        AccountSystem.Get_Size();
-        if(Pars_Op.size() == 0){
-            cout << "Invalid" << endl;
-            return;
-        }
         if(Pars_Op.size() == 1 && Pars_Op[0] == " ")//仅有空白的指令是合法的
             return;
         if(Pars_Op[0] == "quit" || Pars_Op[0] == "exit"){

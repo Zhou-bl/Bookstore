@@ -43,6 +43,10 @@ cstdio
 -
 iomanip
 -
+algorithm
+-
+set
+-
 
 /mnt/d/周秉霖/Bookstore/Command.h
 iostream

@@ -6,10 +6,14 @@
 #include <vector>
 #include <cstdio>
 #include <iomanip>
+#include <algorithm>
+#include <set>
 
 using std::cout;
 using std::endl;
+using std::sort;
 using std::string;
+using std::set;
 using std::fixed;
 using std::setprecision;
 
@@ -168,9 +172,14 @@ public:
             return;
         }
         else{
+            vector<Book> book_set;
             for(int i = 0; i < ans.size(); ++i){
                 Book_Data.read(tmp_book, ans[i]);
-                cout << tmp_book << endl;
+                book_set.push_back(tmp_book);
+            }
+            sort(book_set.begin(), book_set.end());
+            for(auto it = book_set.begin(); it != book_set.end(); ++it){
+                cout << *it << endl;
             }
         }
     }
