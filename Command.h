@@ -95,6 +95,49 @@ public:
             }
         }
     }
+    void Split_Pars(const string& str, vector<string>& ans){
+        string tmp = "";
+        int pos;
+        for(int i = 0; i < str.length(); ++i){
+            if(str[i] == '='){
+                pos = i;
+                ans.push_back(tmp);
+                tmp.clear();
+                break;
+            }
+            else{
+                tmp += str[i];
+            }
+        }
+        if(ans[0] == "-keyword"){
+            for(int i = pos + 2; i < str.length(); ++i){
+                if(i == str.length() - 1 || str[i] == '|'){
+                    ans.push_back(tmp);
+                    tmp.clear();
+                }
+                else{
+                    tmp += str[i];
+                }
+            }
+        }
+    }
+    bool Check_Keyword(){
+        vector<string> ans;
+        for(int i = 1; i < Pars_Op.size(); ++i){
+            ans.clear();
+            Split_Pars(Pars_Op[i], ans);
+            if(ans[0] == "-keyword"){
+                set<string> keyword_set;
+                for(int j = 1; j < ans.size(); ++j){
+                    if(keyword_set.find(ans[j]) != keyword_set.end()){
+                        return false;
+                    }
+                    keyword_set.insert(ans[j]);
+                }
+            }
+        }
+        return true;
+    }
     void run(){//解析完命令开始运行命令
         // #基础指令
 //        AccountSystem.Get_Size();
@@ -199,12 +242,22 @@ public:
         }
         if(Pars_Op[0] == "modify"){
             //todo：check the invalid！！！
+            //todo:new_isbn冲突
             //如未选中图书则操作失败
             //有重复附加参数为非法指令
             //附加参数内容为空则操作失败
             //[keyword] 包含重复信息段则操作失败
             //与已有ISBN冲突
             if(AccountSystem.Get_Now_Pri() < 3){
+                cout << "Invalid\n";
+                return;
+            }
+            int cur_id = AccountSystem.Get_Now_ID();
+            if(!cur_id){
+                cout << "Invalid\n";
+                return;
+            }
+            if(!Check_Keyword()){
                 cout << "Invalid\n";
                 return;
             }

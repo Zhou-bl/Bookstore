@@ -1,9 +1,4 @@
 Invalid
 Invalid
 Invalid
-Invalid
-Invalid
-Invalid
-0.00
-10.00
-Invalid
+1	name1	author1	keyword1|1|2	10.00	0

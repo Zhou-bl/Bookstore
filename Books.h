@@ -258,18 +258,10 @@ public:
     void Modify(Account_System& tmp_account, const string& imf){
         //notice:这里的imf已经确保为单操作指令，不用考虑修改多个信息的情况
         int cur_id = tmp_account.Get_Now_ID();
-        if(!cur_id){
-            cout << "Invalid\n";
-            return;
-        }
         const string id_string = std::to_string(cur_id);
         vector<int> id_index;
         ID_Index.Find(id_string, id_index);
         Book_Data.read(Selected, id_index[0]);
-        if(tmp_account.Get_Now_Pri() < 3){
-            cout << "Invalid\n";
-            return;
-        }
         string ty = "", new_imf = "";
         int pos = 0;
         for(int i = 0; i < imf.length(); ++i){
