@@ -1,7 +1,3 @@
-//
-// Created by zbl on 2021/12/18.
-//
-
 #ifndef BOOKSTORE_ACCOUNT_H
 #define BOOKSTORE_ACCOUNT_H
 
@@ -9,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include "Blocks.h"
+
 
 using std::cin;
 using std::string;
@@ -21,6 +18,7 @@ struct User_Account{
     char User_Name[32] = "";
     char PassWord[32] = "";
     int Priority = 0; //默认为0
+
     User_Account() = default;
     User_Account(const string& tmp_ID, const string& tmp_PW, const int& tmp_p, const string tmp_name = ""){
         strcpy(User_ID, tmp_ID.c_str());
@@ -28,13 +26,29 @@ struct User_Account{
         strcpy(PassWord, tmp_PW.c_str());
         Priority = tmp_p;
     }
+    User_Account operator = (const User_Account& rhs){
+        strcpy(User_ID, rhs.User_ID);
+        strcpy(User_Name, rhs.User_Name);
+        strcpy(PassWord, rhs.PassWord);
+        Priority = rhs.Priority;
+    }
+};
+
+struct Account_Node{
+    User_Account user;
+    int book_id;
+    Account_Node():book_id(0){}
+    Account_Node(User_Account& tmp, const int& id){
+        user = tmp;
+        book_id = id;
+    }
 };
 
 class Account_System{
 private:
-    vector<User_Account> Log_Stack;
     BlockList Account_Index;//存储信息在存储文件中的位置
     MemoryRiver<User_Account> Account_Data;//存储账户信息
+    vector<Account_Node> Log_Stack;
 public:
     Account_System(): Account_Index("account_index"), Account_Data("account_data"){}
     //for de_bug:
@@ -53,7 +67,14 @@ public:
     }
     int Get_Now_Pri(){
         if(Log_Stack.empty()) return 0;
-        return Log_Stack.back().Priority;
+        return Log_Stack.back().user.Priority;
+    }
+    int Get_Now_ID(){
+        if(Log_Stack.empty()) return 0;
+        return Log_Stack.back().book_id;
+    }
+    void Change_ID(const int& tmp_ID){
+        Log_Stack.back().book_id = tmp_ID;
     }
     void Quit(){
         while(!Log_Stack.empty())
@@ -69,12 +90,12 @@ public:
             return;
         }
         Account_Data.read(Selected, tmp[0]);
-        if(!Log_Stack.empty() && Log_Stack.back().Priority > Selected.Priority){
-            Log_Stack.push_back(Selected);
+        if(!Log_Stack.empty() && Get_Now_Pri() > Selected.Priority){
+            Log_Stack.push_back(Account_Node(Selected, 0));
             return;
         }
         if(tmp_Password == Selected.PassWord){
-            Log_Stack.push_back(Selected);
+            Log_Stack.push_back(Account_Node(Selected, 0));
             return;
         }
         else{
@@ -105,7 +126,7 @@ public:
     }
     void Passwd(const string& tmp_ID, const string& tmp_NPW, const string& tmp_OPW){
         //1
-        if(Log_Stack.empty() || Log_Stack.back().Priority < 1){
+        if(Log_Stack.empty() || Get_Now_Pri() < 1){
             //权限不够
             cout << "Invalid" << endl;
             return;
@@ -119,7 +140,7 @@ public:
             return;
         }
         Account_Data.read(Selected, ans[0]);
-        if(Log_Stack.back().Priority == 7){//超级用户
+        if(Get_Now_Pri() == 7){//超级用户
             strcpy(Selected.PassWord, tmp_NPW.c_str());
             Account_Data.update(Selected, ans[0]);
         }
@@ -145,7 +166,7 @@ public:
             cout << "Invalid" << endl;
             return;
         }
-        if(Log_Stack.empty() || Log_Stack.back().Priority <= tmp_Pri){
+        if(Log_Stack.empty() || Get_Now_Pri() <= tmp_Pri){
             //权限不够
             cout << "Invalid" << endl;
             return;
@@ -156,7 +177,7 @@ public:
     }
     void Delete(const string& tmp_ID){
         //7
-        if(Log_Stack.empty() || Log_Stack.back().Priority < 7){
+        if(Log_Stack.empty() || Get_Now_Pri() < 7){
             //权限不够
             cout << "Invalid" << endl;
             return;
@@ -170,7 +191,7 @@ public:
         }
         bool flag = 0;
         for(int i = 0; i < Log_Stack.size(); ++i){
-            if(Log_Stack[i].User_ID == tmp_ID){
+            if(Log_Stack[i].user.User_ID == tmp_ID){
                 flag = 1;
                 break;
             }

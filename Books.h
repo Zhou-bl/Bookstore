@@ -24,18 +24,25 @@ private:
     char Author[64] = "";
     char Keyword[64];
     int Quantity = 0;
+    int ID = 0;
     //小数默认为固定为小数点后两位
     double Price = 0;
 public:
-    Book() = default;
-    Book(string tmp_ISBN){
+    Book(){
+        ISBN[0] = '\0';
+    }
+    Book(string tmp_ISBN, const int& tot_num){
         strcpy(ISBN, tmp_ISBN.c_str());
+        ID = tot_num + 1;
         Quantity = 0;
         Price = 0;
         Book_Name[0] = Author[0] = Keyword[0] ='\0';
     }
     int Get_Num(){
         return Quantity;
+    }
+    int Get_ID(){
+        return ID;
     }
     void Sub_Num(const int& num){
         Quantity -= num;
@@ -80,6 +87,7 @@ public:
         strcpy(Keyword, rhs.Keyword);
         Quantity = rhs.Quantity;
         Price = rhs.Price;
+        ID = rhs.ID;
         return *this;
     }
     bool operator < (const Book& rhs){
@@ -104,9 +112,10 @@ private:
     BlockList Name_Index;
     BlockList Author_Index;
     BlockList Keyword_Index;
+    BlockList ID_Index;
 public:
     Book_System() : Book_Data("book_data"), ISBN_Index("ISBN_index"), Name_Index("name_index")
-                    , Author_Index("author_index"), Keyword_Index("keyword_index"){}
+                    , Author_Index("author_index"), Keyword_Index("keyword_index"), ID_Index("id_index"){}
     void SplitKeyword(const string& str, vector<string>& ans){
         string tmp = "";
         for(int i = 0; i <= str.length(); ++i){
@@ -187,10 +196,12 @@ public:
         }
     }
     bool Buy(Account_System& tmp_account, const string tmp_ISBN, const int& tmp_q, double& tot){
+
         if(tmp_account.Get_Now_Pri() < 1){
             cout << "Invalid" << endl;
             return false;
         }
+
         vector<int> ans;
         Book tmp_book;
         ISBN_Index.Find(tmp_ISBN, ans);
@@ -207,6 +218,9 @@ public:
             else{
                 tot = tmp_q * tmp_book.Get_Price();
                 tmp_book.Sub_Num(tmp_q);
+
+//                cout << "Hello Buy: " << tmp_book.Get_ISBN() <<" "<< tmp_q<< " Now Quantity is " << tmp_book.Get_Num() << endl;
+
                 cout << fixed << setprecision(2) << tot << endl;
                 Book_Data.update(tmp_book, ans[0]);
                 return true;
@@ -215,6 +229,9 @@ public:
     }
     void Select(Account_System& tmp_account, const string& tmp_ISBN){
         //3
+
+//        cout << "This is a pri" << tmp_account.Get_Now_Pri() <<endl;
+
         if(tmp_account.Get_Now_Pri() < 3){
             //权限不够
             cout << "Invalid" << endl;
@@ -223,18 +240,33 @@ public:
         vector<int> ans;
         ISBN_Index.Find(tmp_ISBN, ans);
         if(ans.empty()){//如果没有则创建
-            Selected = Book(tmp_ISBN);
+            int cnt;
+            Book_Data.get_info(cnt, 1);
+            Selected = Book(tmp_ISBN, cnt);
+            tmp_account.Change_ID(Selected.Get_ID());
             int pos = 0;
+            const string ID_string = std::to_string(Selected.Get_ID());
             pos = Book_Data.write(Selected);
             ISBN_Index.Insert(Node(tmp_ISBN, pos));
+            ID_Index.Insert(Node(ID_string, pos));
         }
         else{
             Book_Data.read(Selected, ans[0]);
+            tmp_account.Change_ID(Selected.Get_ID());
         }
     }
     void Modify(Account_System& tmp_account, const string& imf){
         //notice:这里的imf已经确保为单操作指令，不用考虑修改多个信息的情况
-        if(Selected.Get_ISBN() == "" || tmp_account.Get_Now_Pri() < 3){
+        int cur_id = tmp_account.Get_Now_ID();
+        if(!cur_id){
+            cout << "Invalid" << endl;
+            return;
+        }
+        const string id_string = std::to_string(cur_id);
+        vector<int> id_index;
+        ID_Index.Find(id_string, id_index);
+        Book_Data.read(Selected, id_index[0]);
+        if(tmp_account.Get_Now_Pri() < 3){
             cout << "Invalid" << endl;
             return;
         }
@@ -330,15 +362,22 @@ public:
         }
     }
     bool Import(Account_System& tmp_account, const int& tmp_q, const double& tmp_tot){
-        if(tmp_account.Get_Now_Pri() < 3 || Selected.Get_ISBN() == ""){
+        if(tmp_account.Get_Now_Pri() < 3){
             cout << "Invalid" << endl;
             return false;
         }
         else{
-            vector<int> ans;
-            ISBN_Index.Find(Selected.Get_ISBN(), ans);
+            int cur_id = tmp_account.Get_Now_ID();
+            if(!cur_id){
+                cout << "Invalid" << endl;
+                return false;
+            }
+            const string id_string = std::to_string(cur_id);
+            vector<int> id_index;
+            ID_Index.Find(id_string, id_index);
+            Book_Data.read(Selected, id_index[0]);
             Selected.Add_Num(tmp_q);
-            Book_Data.update(Selected, ans[0]);
+            Book_Data.update(Selected, id_index[0]);
             return true;
         }
     }

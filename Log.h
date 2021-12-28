@@ -35,7 +35,11 @@ private:
     int sizeofF = sizeof(FinanceLog);
 public:
     Log_System():Log_Data("log_data"){}
-    void show(){
+    void show(Account_System& tmp_account){
+        if(tmp_account.Get_Now_Pri() < 7){
+            cout << "Invalid" << endl;
+            return;
+        }
         double income = 0, outcome = 0;
         Log_Data.get_info(tot_time, 1);
         for(int i = 8; i <= 8 + (tot_time - 1) * sizeofF; i += sizeofF){
@@ -49,7 +53,11 @@ public:
         }
         cout << fixed << std::setprecision(2)<< "+ " << income << " - " << outcome << endl;
     }
-    void show(const int& num){
+    void show(Account_System& tmp_account, const int& num){
+        if(tmp_account.Get_Now_Pri() < 7){
+            cout << "Invalid" << endl;
+            return;
+        }
         if(!num){
             cout << endl;
             return;

@@ -3,7 +3,7 @@
 #include "Command.h"
 using namespace std;
 int main(){
-//    freopen("1.in","r",stdin);
+//    freopen("4.in","r",stdin);
 //    freopen("Myans.txt","w",stdout);
     Command BookstoreSystem;
     string cmd;

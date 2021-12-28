@@ -95,6 +95,7 @@ public:
     void run(){//解析完命令开始运行命令
         // #基础指令
 //        AccountSystem.Get_Size();
+
         if(Pars_Op.size() == 1 && Pars_Op[0] == " ")//仅有空白的指令是合法的
             return;
         if(Pars_Op[0] == "quit" || Pars_Op[0] == "exit"){
@@ -236,11 +237,11 @@ public:
                 return;
             }
             if(Pars_Op.size() == 2){
-                LogSystem.show();
+                LogSystem.show(AccountSystem);
             }
             else{
                 int t = std::stoi(Pars_Op[2]);
-                LogSystem.show(t);
+                LogSystem.show(AccountSystem, t);
             }
             return;
         }
