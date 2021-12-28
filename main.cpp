@@ -3,7 +3,7 @@
 #include "Command.h"
 using namespace std;
 int main(){
-//    freopen("4.in","r",stdin);
+//    freopen("2.in","r",stdin);
 //    freopen("Myans.txt","w",stdout);
     Command BookstoreSystem;
     string cmd;
@@ -15,7 +15,7 @@ int main(){
 //        cnt++;
 //        cout << cnt << endl;
         if(cmd.length() > 1024){//单次指令最大为1024
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             continue;
         }
         BookstoreSystem.pre(cmd);

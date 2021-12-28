@@ -86,7 +86,7 @@ public:
         User_Account Selected;
         Account_Index.Find(tmp_ID, tmp);
         if(tmp.empty()){
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return;
         }
         Account_Data.read(Selected, tmp[0]);
@@ -99,13 +99,13 @@ public:
             return;
         }
         else{
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
         }
     }
     void Logout(){
         //1
         if(Log_Stack.empty()){
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return;
         }
         Log_Stack.pop_back();
@@ -117,7 +117,7 @@ public:
         Account_Index.Find(tmp_ID, ans);
         if(!ans.empty()){
             //重复的ID，注册失败
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return;
         }
         User_Account new_account(tmp_ID, tmp_Password, 1, tmp_Name);
@@ -128,7 +128,7 @@ public:
         //1
         if(Log_Stack.empty() || Get_Now_Pri() < 1){
             //权限不够
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return;
         }
         vector<int> ans;
@@ -136,7 +136,7 @@ public:
         Account_Index.Find(tmp_ID, ans);
         if(ans.empty()){
             //账户不存在
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return;
         }
         Account_Data.read(Selected, ans[0]);
@@ -147,7 +147,7 @@ public:
         else{//非超级用户
             if(tmp_OPW != Selected.PassWord){
                 //密码不正确
-                cout << "Invalid" << endl;
+                cout << "Invalid\n";
                 return;
             }
             else{
@@ -163,12 +163,12 @@ public:
         Account_Index.Find(tmp_ID, ans);
         if(!ans.empty()){
             //用户名重复
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return;
         }
         if(Log_Stack.empty() || Get_Now_Pri() <= tmp_Pri){
             //权限不够
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return;
         }
         User_Account new_account(tmp_ID, tmp_PW, tmp_Pri, tmp_Name);
@@ -179,14 +179,14 @@ public:
         //7
         if(Log_Stack.empty() || Get_Now_Pri() < 7){
             //权限不够
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return;
         }
         vector<int> ans;
         Account_Index.Find(tmp_ID, ans);
         if(ans.empty()){
             //账户不存在
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return;
         }
         bool flag = 0;
@@ -198,7 +198,7 @@ public:
         }
         if(flag){
             //正在登录栈中
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return;
         }
         Account_Index.Delete(Node(tmp_ID, ans[0]));

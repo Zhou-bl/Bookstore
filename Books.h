@@ -131,7 +131,7 @@ public:
     }
     void Show(Account_System& tmp_account) {
         if(tmp_account.Get_Now_Pri() < 1){
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return;
         }
         vector<int> ans;
@@ -150,7 +150,7 @@ public:
     }
     void Show(Account_System& tmp_account, const string& tmp_index){
         if(tmp_account.Get_Now_Pri() < 1){
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return;
         }
         vector<int> ans;
@@ -198,7 +198,7 @@ public:
     bool Buy(Account_System& tmp_account, const string tmp_ISBN, const int& tmp_q, double& tot){
 
         if(tmp_account.Get_Now_Pri() < 1){
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return false;
         }
 
@@ -206,13 +206,13 @@ public:
         Book tmp_book;
         ISBN_Index.Find(tmp_ISBN, ans);
         if(ans.empty()){
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return false;
         }
         else{
             Book_Data.read(tmp_book, ans[0]);
             if(tmp_book.Get_Num() < tmp_q){
-                cout << "Invalid" << endl;
+                cout << "Invalid\n";
                 return false;
             }
             else{
@@ -234,7 +234,7 @@ public:
 
         if(tmp_account.Get_Now_Pri() < 3){
             //权限不够
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return;
         }
         vector<int> ans;
@@ -259,7 +259,7 @@ public:
         //notice:这里的imf已经确保为单操作指令，不用考虑修改多个信息的情况
         int cur_id = tmp_account.Get_Now_ID();
         if(!cur_id){
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return;
         }
         const string id_string = std::to_string(cur_id);
@@ -267,7 +267,7 @@ public:
         ID_Index.Find(id_string, id_index);
         Book_Data.read(Selected, id_index[0]);
         if(tmp_account.Get_Now_Pri() < 3){
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return;
         }
         string ty = "", new_imf = "";
@@ -295,7 +295,7 @@ public:
             ISBN_Index.Find(old_isbn, old_ans);
             ISBN_Index.Find(new_imf, new_ans);
             if(!new_ans.empty()){//与已有ISBN重复
-                cout << "Invalid" << endl;
+                cout << "Invalid\n";
                 return;
             }
             else{
@@ -363,13 +363,13 @@ public:
     }
     bool Import(Account_System& tmp_account, const int& tmp_q, const double& tmp_tot){
         if(tmp_account.Get_Now_Pri() < 3){
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return false;
         }
         else{
             int cur_id = tmp_account.Get_Now_ID();
             if(!cur_id){
-                cout << "Invalid" << endl;
+                cout << "Invalid\n";
                 return false;
             }
             const string id_string = std::to_string(cur_id);

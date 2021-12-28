@@ -35,6 +35,9 @@ public:
             cmd = " ";
             return;
         }
+        if(cmd.back() == '\r'){
+            cmd.pop_back();
+        }
         //1.若全为空白(多个空格)
         bool Is_Blank = 1;
         for(int i = 0; i < cmd.length(); ++i)
@@ -100,7 +103,7 @@ public:
             return;
         if(Pars_Op[0] == "quit" || Pars_Op[0] == "exit"){
             if(Pars_Op.size() > 1){
-                cout << "Invalid" << endl;
+                cout << "Invalid\n";
                 return;
             }
             else{
@@ -123,7 +126,7 @@ public:
         }
         if(Pars_Op[0] == "register"){
             if(Pars_Op.size() != 4){
-                cout << "Invalid" << endl;
+                cout << "Invalid\n";
                 return;
             }
             AccountSystem.Register(Pars_Op[1], Pars_Op[2], Pars_Op[3]);
@@ -140,7 +143,7 @@ public:
         }
         if(Pars_Op[0] == "useradd"){
             if(Pars_Op.size() != 5){
-                cout << "Invalid" << endl;
+                cout << "Invalid\n";
                 return;
             }
             int pri = 0;
@@ -166,13 +169,13 @@ public:
                 return;
             }
             else{
-                cout << "Invalid" << endl;
+                cout << "Invalid\n";
                 return;
             }
         }
         if(Pars_Op[0] == "buy"){
             if(Pars_Op.size() != 3){
-                cout << "Invalid" << endl;
+                cout << "Invalid\n";
                 return;
             }
             int num = 0;
@@ -188,7 +191,7 @@ public:
         }
         if(Pars_Op[0] == "select"){
             if(Pars_Op.size() != 2){
-                cout << "Invalid" << endl;
+                cout << "Invalid\n";
                 return;
             }
             BookSystem.Select(AccountSystem, Pars_Op[1]);
@@ -202,7 +205,7 @@ public:
             //[keyword] 包含重复信息段则操作失败
             //与已有ISBN冲突
             if(AccountSystem.Get_Now_Pri() < 3){
-                cout << "Invalid" << endl;
+                cout << "Invalid\n";
                 return;
             }
             for(int i = 1; i < Pars_Op.size(); ++i){
@@ -212,8 +215,24 @@ public:
         }
         if(Pars_Op[0] == "import"){
             if(Pars_Op.size() != 3){
-                cout << "Invalid" << endl;
+                cout << "Invalid\n";
                 return;
+            }
+            for(int i = 0; i < Pars_Op[1].length(); ++i){
+                if(Pars_Op[1][i] < '0' || Pars_Op[1][i] > '9'){
+                    cout << "Invalid\n";
+                    return;
+                }
+            }
+            if(Pars_Op[2][0] < '0' || Pars_Op[2][0] > '9'){
+                cout << "Invalid\n";
+                return;
+            }
+            for(int i = 1; i < Pars_Op[2].length(); ++i){
+                if((Pars_Op[2][i] < '0' || Pars_Op[2][i] > '9') && Pars_Op[2][i] != '.'){
+                    cout << "Invalid\n";
+                    return;
+                }
             }
             int q;
             double p;
@@ -233,7 +252,7 @@ public:
         }
         if(Pars_Op[0] == "show" && Pars_Op[1] == "finance"){
             if(Pars_Op.size() != 2 && Pars_Op.size() != 3){
-                cout << "Invalid" << endl;
+                cout << "Invalid\n";
                 return;
             }
             if(Pars_Op.size() == 2){

@@ -37,7 +37,7 @@ public:
     Log_System():Log_Data("log_data"){}
     void show(Account_System& tmp_account){
         if(tmp_account.Get_Now_Pri() < 7){
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return;
         }
         double income = 0, outcome = 0;
@@ -55,7 +55,7 @@ public:
     }
     void show(Account_System& tmp_account, const int& num){
         if(tmp_account.Get_Now_Pri() < 7){
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return;
         }
         if(!num){
@@ -65,7 +65,7 @@ public:
         double income = 0, outcome = 0;
         Log_Data.get_info(tot_time, 1);
         if(num > tot_time){
-            cout << "Invalid" << endl;
+            cout << "Invalid\n";
             return;
         }
         for(int i = 8 + (tot_time - 1) * sizeofF; i >= 8 + (tot_time - num) * sizeofF; i -= sizeofF){
