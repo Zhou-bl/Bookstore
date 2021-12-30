@@ -106,14 +106,14 @@ public:
     bool Check_Userid_and_Password(const string& str){
         if(str.empty() || str.length() > 30) return false;
         for(int i = 0; i < str.length(); ++i){
-            if(!isalpha(str[i]) && !isdigit(str[i]) && str[i] != '_') return false;
+            if(!isalnum(str[i]) && str[i] != '_') return false;
         }
         return true;
     }
     bool Check_UserName(const string& str){
         if(str.empty() || str.length() > 30) return false;
         for(int i = 0; i < str.length(); ++i){
-            if(iscntrl(str[i])) return false;
+            if(!isprint(str[i])) return false;
         }
         return true;
     }
@@ -125,21 +125,21 @@ public:
     bool Check_ISBN(const string& str){
         if(str.empty() || str.length() > 20) return false;
         for(int i = 0; i < str.length(); ++i){
-            if(iscntrl(str[i])) return false;
+            if(!isprint(str[i])) return false;
         }
         return true;
     }
     bool Check_Name_Author(const string& str){
         if(str.empty() || str.length() > 60) return false;
         for(int i = 0; i < str.length(); ++i){
-            if(iscntrl(str[i]) || str[i] == '\"') return false;
+            if(!isprint(str[i]) || str[i] == '\"') return false;
         }
         return true;
     }
     bool Check_Index_Keyword(const string& str){
         if(str.empty() || str.length() > 60) return false;
         for(int i = 0; i < str.length(); ++i){
-            if(iscntrl(str[i]) || str[i] == '\"' || str[i] == '|') return false;
+            if(!isprint(str[i]) || str[i] == '\"' || str[i] == '|') return false;
         }
         return true;
     }
@@ -158,7 +158,7 @@ public:
         if(str.empty() || str.length() > 60) return false;
         if(str[0] == '|' || str.back() == '|') return false;
         for(int i = 0; i < str.length(); ++i)
-            if(iscntrl(str[i]) || str[i] == '\"') return false;
+            if(!isprint(str[i]) || str[i] == '\"') return false;
         string single_key = "";
         set<string> key_set;
         for(int i = 0; i <= str.length(); ++i){

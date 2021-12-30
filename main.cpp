@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdio>
 #include "Command.h"
 using namespace std;
 int main(){
@@ -6,7 +7,6 @@ int main(){
 //    freopen("Myans.txt","w",stdout);
     Command BookstoreSystem;
     string cmd;
-
     int cnt = 0;
     bool flag = 0;
     while(getline(cin, cmd)){

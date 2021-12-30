@@ -79,6 +79,8 @@ iomanip
 /mnt/d/周秉霖/Bookstore/main.cpp
 iostream
 -
+cstdio
+-
 Command.h
 /mnt/d/周秉霖/Bookstore/Command.h
 
