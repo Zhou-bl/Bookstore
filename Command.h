@@ -182,7 +182,7 @@ public:
             if(str[i] == '.') num++;
         }
         //小数点不能在头或者尾
-        if(str[0] == '.' || str.back() == '.') return false;
+        if(str[0] == '0' || str[0] == '.' || str.back() == '.') return false;
         if(num > 1) return false;
         return true;
     }
