@@ -499,10 +499,20 @@ public:
             if(!Check_Cmd(Pars_Op[1])){
                 throw Exception();
             }
+            if(Pars_Op[1] == "myself" && AccountSystem.Get_Now_Pri() < 3){
+                throw Exception();
+            }
+            else if(AccountSystem.Get_Now_Pri() < 7){
+                throw Exception();
+            }
+            //todo
             return;
         }
         if(Pars_Op[0] == "show" && Pars_Op[1] == "finance"){
             if(Pars_Op.size() != 2 && Pars_Op.size() != 3){
+                throw Exception();
+            }
+            if(AccountSystem.Get_Now_Pri() < 7){
                 throw Exception();
             }
             if(Pars_Op.size() == 2){
@@ -515,13 +525,17 @@ public:
                 int t = std::stoi(Pars_Op[2]);
                 LogSystem.show(AccountSystem, t);
             }
+            //todo
             return;
         }
         if(Pars_Op[0] == "log"){
-            //todo
             if(Pars_Op.size() != 1){
                 throw Exception();
             }
+            if(AccountSystem.Get_Now_Pri() < 7){
+                throw Exception();
+            }
+            //todo
             return;
         }
         //仍然不返回说明指令不合法
