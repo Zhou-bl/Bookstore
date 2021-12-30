@@ -46,10 +46,10 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/2.out" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/4.out" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/2.out" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/4.out" />
   </component>
   <component name="RunManager">
     <configuration name="Bookstore" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Bookstore" TARGET_NAME="Bookstore" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Bookstore" RUN_TARGET_NAME="Bookstore">
@@ -107,7 +107,11 @@
       <workItem from="1640617522260" duration="663000" />
       <workItem from="1640618320507" duration="5732000" />
       <workItem from="1640664046912" duration="9265000" />
-      <workItem from="1640690082984" duration="1187000" />
+      <workItem from="1640690082984" duration="4819000" />
+      <workItem from="1640767936505" duration="7489000" />
+      <workItem from="1640825225934" duration="3436000" />
+      <workItem from="1640837545392" duration="3969000" />
+      <workItem from="1640844437993" duration="968000" />
     </task>
     <servers />
   </component>
@@ -120,6 +124,7 @@
         <watch expression="tmp_account.Get_Now_Pri()" language="ObjectiveC" />
         <watch expression="cmd.length()" language="ObjectiveC" />
         <watch expression="key" language="ObjectiveC" />
+        <watch expression="str[i]" language="ObjectiveC" />
       </configuration>
     </watches-manager>
   </component>

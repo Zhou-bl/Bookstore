@@ -5,6 +5,7 @@ CMakeFiles/Bookstore.dir/main.cpp.o: ../Account.h
 CMakeFiles/Bookstore.dir/main.cpp.o: ../Blocks.h
 CMakeFiles/Bookstore.dir/main.cpp.o: ../Books.h
 CMakeFiles/Bookstore.dir/main.cpp.o: ../Command.h
+CMakeFiles/Bookstore.dir/main.cpp.o: ../Exception.h
 CMakeFiles/Bookstore.dir/main.cpp.o: ../Log.h
 CMakeFiles/Bookstore.dir/main.cpp.o: ../main.cpp
 

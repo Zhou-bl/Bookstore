@@ -129,6 +129,11 @@ public:
         }
         return;
     }
+    bool Is_Exist(const string& isbn){
+        vector<int> ans;
+        ISBN_Index.Find(isbn, ans);
+        return !ans.empty();
+    }
     void Show(Account_System& tmp_account) {
         if(tmp_account.Get_Now_Pri() < 1){
             cout << "Invalid\n";
