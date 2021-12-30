@@ -519,10 +519,12 @@ public:
         }
         if(Pars_Op[0] == "log"){
             //todo
+            if(Pars_Op.size() != 1){
+                throw Exception();
+            }
             return;
         }
         //仍然不返回说明指令不合法
-        //todo:处理不合法的指令
         cout << "Invalid\n";
         return;
     }
