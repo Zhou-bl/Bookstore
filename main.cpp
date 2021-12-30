@@ -1,24 +1,24 @@
 #include <iostream>
 #include "Command.h"
-#include "Exception.h"
 using namespace std;
 int main(){
-//    freopen("test.txt","r",stdin);
+//    freopen("1.in","r",stdin);
 //    freopen("Myans.txt","w",stdout);
     Command BookstoreSystem;
     string cmd;
 
     int cnt = 0;
-
+    bool flag = 0;
     while(getline(cin, cmd)){
         //对于每一条指令，先解析，再执行
-//        cmd = " \t\n    \t\n";
+//        cmd = " su\t\n    \t\n";
 //        cnt++;
 //        cout << cnt << endl;
         try{
             BookstoreSystem.pre(cmd);
             BookstoreSystem.get_cmd(cmd);
-            BookstoreSystem.run();
+            BookstoreSystem.run(flag);
+            if(flag) break;
         }
         catch (Exception){
             cout << "Invalid\n";

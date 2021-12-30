@@ -265,7 +265,7 @@ public:
         }
         return false;//索引不对
     }
-    void run(){//解析完命令开始运行命令
+    void run(bool& flag){//解析完命令开始运行命令
         // #基础指令
 //        AccountSystem.Get_Size();
 
@@ -273,12 +273,12 @@ public:
             return;
         }
         if(Pars_Op[0] == "quit" || Pars_Op[0] == "exit"){
-            if(Pars_Op.size() > 1){//格式
-                cout << "Invalid\n";
-                return;
+            if(Pars_Op.size() != 1){//格式
+                throw Exception();
             }
             else{
                 AccountSystem.Quit();
+                flag = 1;
                 return;
             }
         }
