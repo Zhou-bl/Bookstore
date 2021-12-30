@@ -38,13 +38,13 @@ public:
             if(!isascii(cmd[i]) || cmd[i] == '\t') throw Exception();
         int num = 0;
         for(int i = 0; i < cmd.length(); ++i){
-            if(cmd[i] == ' ' || cmd[i] == '\n') num++;
+            if(cmd[i] == ' ' || cmd[i] == '\n' || cmd[i] == '\r') num++;
         }
         if(num == cmd.length()){
             cmd = "";
             return;
         }
-        while(!cmd.empty() && (cmd.back() == '\n' || cmd.back() == ' '))
+        while(!cmd.empty() && (cmd.back() == '\r' || cmd.back() == '\n' || cmd.back() == ' '))
             cmd.pop_back();
         //1.若全为空白(多个空格)
         bool Is_Blank = 1;
