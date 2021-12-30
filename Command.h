@@ -107,7 +107,7 @@ public:
         }
     }
     bool Check_Userid_and_Password(const string& str){
-        if(str.length() > 30) return false;
+        if(str.empty() || str.length() > 30) return false;
         for(int i = 0; i < str.length(); ++i){
             if(!isalpha(str[i]) && !isdigit(str[i]) && str[i] != '_'){
                 return false;
@@ -116,7 +116,7 @@ public:
         return true;
     }
     bool Check_UserName(const string& str){
-        if(str.length() > 30) return false;
+        if(str.empty() || str.length() > 30) return false;
         for(int i = 0; i < str.length(); ++i){
             if(iscntrl(str[i])) return false;
         }
@@ -152,7 +152,7 @@ public:
         return true;
     }
     bool Check_Quantity(const string& str){
-        if(str.length() > 10) return false;
+        if(str.empty() || str.length() > 10) return false;
         for(int i = 0; i < str.length(); ++i)
             if(!isdigit(str[i])) return false;
         long long num = 0;
@@ -164,6 +164,7 @@ public:
     }
     bool Check_Modify_Keyword(const string& str){
         if(str.empty() || str.length() > 60) return false;
+        if(str[0] == '|' || str.back() == '|') return false;
         for(int i = 0; i < str.length(); ++i)
             if(iscntrl(str[i]) || str[i] == '\"') return false;
         string single_key = "";
@@ -172,6 +173,7 @@ public:
             if(i == str.length() || str[i] == '|'){
                 if(key_set.find(single_key) != key_set.end()) return false;
                 else {
+                    if(!Check_Index_Keyword(single_key)) return false;
                     key_set.insert(single_key);
                     single_key.clear();
                 }
