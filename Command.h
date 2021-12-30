@@ -184,14 +184,7 @@ public:
         //小数点不能在头或者尾
         if(str[0] == '.' || str.back() == '.') return false;
         if(num > 1) return false;
-        int pos;
-        for(int i = 0; i < str.length(); ++i){
-            if(str[i] != '.' && str[i] != '0'){
-                pos = i;
-                break;
-            }
-        }
-        if(pos && str[pos - 1] == '0') return false;
+        if(str != "0" && str[0] == '0' && str[1] != '.') return false;
         return true;
     }
     bool Check_Cmd(const string& str){
