@@ -11,7 +11,7 @@ int main(){
     bool flag = 0;
     while(getline(cin, cmd)){
         //对于每一条指令，先解析，再执行
-//        cmd = " su\t\n    \t\n";
+//        cmd = "  \t  ";
 //        cnt++;
 //        cout << cnt << endl;
         try{

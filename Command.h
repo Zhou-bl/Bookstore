@@ -35,20 +35,17 @@ public:
         if(cmd.length() > 1024) throw Exception();
         //不能出现非ascii
         for(int i = 0; i < cmd.length(); ++i)
-            if(!isascii(cmd[i])) throw Exception();
-        while(!cmd.empty() && cmd.back() == '\r')
-            cmd.pop_back();
-
-        //处理空行
+            if(!isascii(cmd[i]) || cmd[i] == '\t') throw Exception();
         int num = 0;
         for(int i = 0; i < cmd.length(); ++i){
-            if(cmd[i] == ' ' || cmd[i] == '\t' || cmd[i] == '\n') num++;
+            if(cmd[i] == ' ' || cmd[i] == '\n') num++;
         }
         if(num == cmd.length()){
             cmd = "";
             return;
         }
-
+        while(!cmd.empty() && (cmd.back() == '\r' || cmd.back() == ' '))
+            cmd.pop_back();
         //1.若全为空白(多个空格)
         bool Is_Blank = 1;
         for(int i = 0; i < cmd.length(); ++i)

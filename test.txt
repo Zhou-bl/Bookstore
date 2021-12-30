@@ -1,16 +1,11 @@
-register UserA 123 UserA
-register UserB 123 UserB
-register UserC 123 UserC
 su root sjtu
-useradd Okami 123 7 Okami
-su Okami 123
-useradd Essein 123 3 Essein
-su Essein
-useradd Wow 123 7 Wow
-delete UserA
-logout
-useradd Wow 123 7 Wow
-delete UserA
-delete UserB
-delete UserC
-delete Okami
+     useradd 12             999090 3 uhsusuh
+useradd 12 000 1 uuu
+su 12
+
+
+select aBc22-=|/%&*{
+modify -ISBN=12 -name="jjjj"
+modify -ISBN=12
+quit
+exit
