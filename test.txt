@@ -1,7 +1,3 @@
-su root \tsjtu
 
 
-
-logout
-exit
 

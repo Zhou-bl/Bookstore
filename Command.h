@@ -36,15 +36,19 @@ public:
         //不能出现非ascii
         for(int i = 0; i < cmd.length(); ++i)
             if(!isascii(cmd[i])) throw Exception();
+        while(!cmd.empty() && cmd.back() == '\r')
+            cmd.pop_back();
 
-        //0.若为空字符串,则什么也不干,返回cmd = " "
-        if(cmd == ""){
-            cmd = " ";
+        //处理空行
+        int num = 0;
+        for(int i = 0; i < cmd.length(); ++i){
+            if(cmd[i] == ' ' || cmd[i] == '\t' || cmd[i] == '\n') num++;
+        }
+        if(num == cmd.length()){
+            cmd = "";
             return;
         }
-        if(cmd.back() == '\r'){//去除行末换行符
-            cmd.pop_back();
-        }
+
         //1.若全为空白(多个空格)
         bool Is_Blank = 1;
         for(int i = 0; i < cmd.length(); ++i)

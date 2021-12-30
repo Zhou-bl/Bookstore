@@ -3,7 +3,7 @@
 #include "Exception.h"
 using namespace std;
 int main(){
-//    freopen("4.in","r",stdin);
+//    freopen("test.txt","r",stdin);
 //    freopen("Myans.txt","w",stdout);
     Command BookstoreSystem;
     string cmd;
@@ -12,7 +12,7 @@ int main(){
 
     while(getline(cin, cmd)){
         //对于每一条指令，先解析，再执行
-//        cmd = "su root \tsjtu";
+//        cmd = " \t\n    \t\n";
 //        cnt++;
 //        cout << cnt << endl;
         try{
