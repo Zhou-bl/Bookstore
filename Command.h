@@ -503,13 +503,15 @@ public:
         }
         if(Pars_Op[0] == "show" && Pars_Op[1] == "finance"){
             if(Pars_Op.size() != 2 && Pars_Op.size() != 3){
-                cout << "Invalid\n";
-                return;
+                throw Exception();
             }
             if(Pars_Op.size() == 2){
                 LogSystem.show(AccountSystem);
             }
             else{
+                if(!Check_Quantity(Pars_Op[2])){
+                    throw Exception();
+                }
                 int t = std::stoi(Pars_Op[2]);
                 LogSystem.show(AccountSystem, t);
             }
