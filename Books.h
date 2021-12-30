@@ -23,7 +23,7 @@ private:
     char Book_Name[64] = "";
     char Author[64] = "";
     char Keyword[64];
-    int Quantity = 0;
+    long long Quantity = 0;
     int ID = 0;
     //小数默认为固定为小数点后两位
     double Price = 0;
@@ -31,7 +31,7 @@ public:
     Book(){
         ISBN[0] = '\0';
     }
-    Book(string tmp_ISBN, const int& tot_num){
+    Book(string tmp_ISBN, const long long& tot_num){
         strcpy(ISBN, tmp_ISBN.c_str());
         ID = tot_num + 1;
         Quantity = 0;
@@ -44,10 +44,10 @@ public:
     int Get_ID(){
         return ID;
     }
-    void Sub_Num(const int& num){
+    void Sub_Num(const long long& num){
         Quantity -= num;
     }
-    void Add_Num(const int& num){
+    void Add_Num(const long long& num){
         Quantity += num;
     }
     string Get_ISBN(){
@@ -135,10 +135,6 @@ public:
         return !ans.empty();
     }
     void Show(Account_System& tmp_account) {
-        if(tmp_account.Get_Now_Pri() < 1){
-            cout << "Invalid\n";
-            return;
-        }
         vector<int> ans;
         ISBN_Index.FindAll(ans);
         Book tmp_book;
@@ -154,10 +150,6 @@ public:
         }
     }
     void Show(Account_System& tmp_account, const string& tmp_index){
-        if(tmp_account.Get_Now_Pri() < 1){
-            cout << "Invalid\n";
-            return;
-        }
         vector<int> ans;
         Book tmp_book;
         string index = "";
@@ -201,12 +193,6 @@ public:
         }
     }
     bool Buy(Account_System& tmp_account, const string tmp_ISBN, const int& tmp_q, double& tot){
-
-        if(tmp_account.Get_Now_Pri() < 1){
-            cout << "Invalid\n";
-            return false;
-        }
-
         vector<int> ans;
         Book tmp_book;
         ISBN_Index.Find(tmp_ISBN, ans);
@@ -237,11 +223,6 @@ public:
 
 //        cout << "This is a pri" << tmp_account.Get_Now_Pri() <<endl;
 
-        if(tmp_account.Get_Now_Pri() < 3){
-            //权限不够
-            cout << "Invalid\n";
-            return;
-        }
         vector<int> ans;
         ISBN_Index.Find(tmp_ISBN, ans);
         if(ans.empty()){//如果没有则创建
@@ -291,18 +272,12 @@ public:
             vector<int> old_ans, new_ans;
             ISBN_Index.Find(old_isbn, old_ans);
             ISBN_Index.Find(new_imf, new_ans);
-            if(!new_ans.empty()){//与已有ISBN重复
-                cout << "Invalid\n";
-                return;
-            }
-            else{
-                int pos = old_ans[0];////数组越界
-                Selected.Change_ISBN(new_imf);
-                Book_Data.update(Selected, pos);
-                ISBN_Index.Delete(Node(old_isbn, pos));
-                ISBN_Index.Insert(Node(new_imf, pos));
-                return;
-            }
+            int pos = old_ans[0];
+            Selected.Change_ISBN(new_imf);
+            Book_Data.update(Selected, pos);
+            ISBN_Index.Delete(Node(old_isbn, pos));
+            ISBN_Index.Insert(Node(new_imf, pos));
+            return;
         }
         if(ty == "-name"){
             string isbn = Selected.Get_ISBN(), old_name = Selected.Get_Name();
@@ -359,24 +334,14 @@ public:
         }
     }
     bool Import(Account_System& tmp_account, const int& tmp_q, const double& tmp_tot){
-        if(tmp_account.Get_Now_Pri() < 3){
-            cout << "Invalid\n";
-            return false;
-        }
-        else{
-            int cur_id = tmp_account.Get_Now_ID();
-            if(!cur_id){
-                cout << "Invalid\n";
-                return false;
-            }
-            const string id_string = std::to_string(cur_id);
-            vector<int> id_index;
-            ID_Index.Find(id_string, id_index);
-            Book_Data.read(Selected, id_index[0]);
-            Selected.Add_Num(tmp_q);
-            Book_Data.update(Selected, id_index[0]);
-            return true;
-        }
+        int cur_id = tmp_account.Get_Now_ID();
+        const string id_string = std::to_string(cur_id);
+        vector<int> id_index;
+        ID_Index.Find(id_string, id_index);
+        Book_Data.read(Selected, id_index[0]);
+        Selected.Add_Num(tmp_q);
+        Book_Data.update(Selected, id_index[0]);
+        return true;
     }
 };
 

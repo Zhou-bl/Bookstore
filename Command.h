@@ -109,9 +109,7 @@ public:
     bool Check_Userid_and_Password(const string& str){
         if(str.empty() || str.length() > 30) return false;
         for(int i = 0; i < str.length(); ++i){
-            if(!isalpha(str[i]) && !isdigit(str[i]) && str[i] != '_'){
-                return false;
-            }
+            if(!isalpha(str[i]) && !isdigit(str[i]) && str[i] != '_') return false;
         }
         return true;
     }
@@ -144,10 +142,7 @@ public:
     bool Check_Index_Keyword(const string& str){
         if(str.empty() || str.length() > 60) return false;
         for(int i = 0; i < str.length(); ++i){
-            if(iscntrl(str[i]) || str[i] == '\"') return false;
-        }
-        for(int i = 0; i < str.length(); ++i){
-            if(str[i] == '|') return false;
+            if(iscntrl(str[i]) || str[i] == '\"' || str[i] == '|') return false;
         }
         return true;
     }
@@ -390,6 +385,9 @@ public:
             if(Pars_Op.size() == 2 && !Split_Index(Pars_Op[1], par_index)){//更强的格式
                 throw Exception();
             }
+            if(AccountSystem.Get_Now_Pri() < 1){
+                throw Exception();
+            }
             if(Pars_Op.size() == 2){//检查索引是否合法
                 if(par_index[0] == "-ISBN" && !Check_ISBN(par_index[1]))
                     throw Exception();
@@ -409,6 +407,9 @@ public:
         }
         if(Pars_Op[0] == "buy"){
             if(Pars_Op.size() != 3){//格式
+                throw Exception();
+            }
+            if(AccountSystem.Get_Now_Pri() < 1){
                 throw Exception();
             }
             if(!Check_ISBN(Pars_Op[1])){//isbn
@@ -432,6 +433,9 @@ public:
             if(Pars_Op.size() != 2){//格式
                 throw Exception();
             }
+            if(AccountSystem.Get_Now_Pri() < 3){
+                throw Exception();
+            }
             if(!Check_ISBN(Pars_Op[1])){//isbn
                 throw Exception();
             }
@@ -439,10 +443,10 @@ public:
             return;
         }
         if(Pars_Op[0] == "modify"){
-            if(AccountSystem.Get_Now_Pri() < 3){//权限
+            if(Pars_Op.size() <= 1){//格式
                 throw Exception();
             }
-            if(Pars_Op.size() <= 1){//格式
+            if(AccountSystem.Get_Now_Pri() < 3){//权限
                 throw Exception();
             }
             int cur_id = AccountSystem.Get_Now_ID();
@@ -472,6 +476,13 @@ public:
         }
         if(Pars_Op[0] == "import"){
             if(Pars_Op.size() != 3){
+                throw Exception();
+            }
+            if(AccountSystem.Get_Now_Pri() < 3){
+                throw Exception();
+            }
+            int cur_id = AccountSystem.Get_Now_ID();
+            if(!cur_id){
                 throw Exception();
             }
             if(!Check_Quantity(Pars_Op[1])){
