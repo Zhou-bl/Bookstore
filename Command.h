@@ -35,7 +35,7 @@ public:
         if(cmd.length() > 1024) throw Exception();
         //不能出现非ascii
         for(int i = 0; i < cmd.length(); ++i)
-            if(!isascii(cmd[i]) || cmd[i] == '\t') throw Exception();
+            if(!isascii(cmd[i])) throw Exception();
         int num = 0;
         for(int i = 0; i < cmd.length(); ++i){
             if(cmd[i] == ' ' || cmd[i] == '\n' || cmd[i] == '\r') num++;
@@ -326,6 +326,9 @@ public:
             if(Pars_Op.size() != 3 && Pars_Op.size() != 4){//格式
                 throw Exception();
             }
+            if(AccountSystem.Get_Now_Pri() < 1){
+                throw Exception();
+            }
             if(!Check_Userid_and_Password(Pars_Op[1])){//id
                 throw Exception();
             }
@@ -346,6 +349,9 @@ public:
         }
         if(Pars_Op[0] == "useradd"){
             if(Pars_Op.size() != 5){//格式
+                throw Exception();
+            }
+            if(AccountSystem.Get_Now_Pri() < 3){
                 throw Exception();
             }
             if(!Check_Userid_and_Password(Pars_Op[1])){//id
@@ -369,6 +375,9 @@ public:
         }
         if(Pars_Op[0] == "delete"){
             if(Pars_Op.size() != 2){//格式
+                throw Exception();
+            }
+            if(AccountSystem.Get_Now_Pri() < 7){
                 throw Exception();
             }
             if(!Check_Userid_and_Password(Pars_Op[1])){//id

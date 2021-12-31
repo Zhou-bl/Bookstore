@@ -126,11 +126,6 @@ public:
     }
     void Passwd(const string& tmp_ID, const string& tmp_NPW, const string& tmp_OPW){
         //1
-        if(Log_Stack.empty() || Get_Now_Pri() < 1){
-            //权限不够
-            cout << "Invalid\n";
-            return;
-        }
         vector<int> ans;
         User_Account Selected;
         Account_Index.Find(tmp_ID, ans);
