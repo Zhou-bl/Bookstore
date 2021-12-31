@@ -90,7 +90,11 @@ public:
             return;
         }
         Account_Data.read(Selected, tmp[0]);
-        if(!Log_Stack.empty() && Get_Now_Pri() > Selected.Priority){
+        if(tmp_Password != "" && tmp_Password != Selected.PassWord){
+            cout << "Invalid\n";
+            return;
+        }
+        if(Get_Now_Pri() > Selected.Priority){
             Log_Stack.push_back(Account_Node(Selected, 0));
             return;
         }
@@ -135,6 +139,10 @@ public:
             return;
         }
         Account_Data.read(Selected, ans[0]);
+        if(tmp_OPW != "" && tmp_OPW != Selected.PassWord){
+            cout << "Invalid\n";
+            return;
+        }
         if(Get_Now_Pri() == 7){//超级用户
             strcpy(Selected.PassWord, tmp_NPW.c_str());
             Account_Data.update(Selected, ans[0]);

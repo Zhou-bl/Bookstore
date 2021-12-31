@@ -1,4 +1,1 @@
 su root sjtu
-useradd user1 1111 3 4444
-su user1
-delete user1
