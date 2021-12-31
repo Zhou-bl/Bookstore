@@ -393,7 +393,7 @@ public:
             if(Pars_Op.size() == 2){//检查索引是否合法
                 if(par_index[0] == "-ISBN" && !Check_ISBN(par_index[1]))
                     throw Exception();
-                else if((par_index[0] == "-name" || par_index[0] == "author") && !Check_Name_Author(par_index[1]))
+                else if((par_index[0] == "-name" || par_index[0] == "-author") && !Check_Name_Author(par_index[1]))
                     throw Exception();
                 else if(!Check_Index_Keyword(par_index[1]))
                     throw Exception();
