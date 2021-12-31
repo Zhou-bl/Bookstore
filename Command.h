@@ -213,16 +213,19 @@ public:
                 if(BookSystem.Is_Exist(tmp_imf)) return false;
             }
             else if(ty[i] == "-name"){
+                if(Par.length() <= 8) return false;
                 if(Par[6] != '\"' || Par.back() != '\"') return false;
                 for(int j = 7; j < Par.length() - 1; ++j) tmp_imf += Par[j];
                 if(!Check_Name_Author(tmp_imf)) return false;
             }
             else if(ty[i] == "-author"){
+                if(Par.length() <= 10) return false;
                 if(Par[8] != '\"' || Par.back() != '\"') return false;
                 for(int j = 9; j < Par.length() - 1; ++j) tmp_imf += Par[j];
                 if(!Check_Name_Author(tmp_imf)) return false;
             }
             else if(ty[i] == "-keyword"){
+                if(Par.length() <= 11) return false;
                 if(Par[9] != '\"' || Par.back() != '\"') return false;
                 for(int j = 10; j < Par.length() - 1; ++j) tmp_imf += Par[j];
                 if(!Check_Modify_Keyword(tmp_imf)) return false;
@@ -253,7 +256,8 @@ public:
         }
         else if(tmp == "-name" || tmp == "-author" || tmp == "-keyword"){
             tmp.clear();
-            if(str[pos + 1] != '\"' && str.back() != '\"') return false;
+            if(str.length() < pos + 3) return false;
+            if(str[pos + 1] != '\"' || str.back() != '\"') return false;
             for(int i = pos + 2; i < str.length() - 1; ++i) tmp += str[i];
             ans.push_back(tmp);
             return true;

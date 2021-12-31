@@ -1,17 +1,10 @@
 su root sjtu
-     useradd 12             999090 3 uhsusuh
-useradd 12 000 1 uuu
-su 12
-
-select aBc22-=|/%&*{}
-modify -ISBN=55555555555555555555
-modify -keyword="0000000000000000000000000000000000000000000000000000000000000"
-modify -name="0000000000000000000000000000000000000000000000000000000000000"
-modify -author="0000000000000000000000000000000000000000000000000000000000000"
-modify -price=09.01
-show -name=""
-show -ISBN=
-show -AUTHOR
-show -ISBN=55555555555555555555
-quit
-exit
+select 243
+show -keyword="|
+show -name=
+logout
+show myself
+show finance
+show employee
+su root sjtu
+show finance

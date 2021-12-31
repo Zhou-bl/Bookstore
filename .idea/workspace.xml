@@ -46,10 +46,10 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/6.out" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Myansstd.txt" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/6.out" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/Myansstd.txt" />
   </component>
   <component name="RunManager">
     <configuration name="Bookstore" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Bookstore" TARGET_NAME="Bookstore" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Bookstore" RUN_TARGET_NAME="Bookstore">
@@ -57,9 +57,9 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -113,7 +113,8 @@
       <workItem from="1640837545392" duration="3969000" />
       <workItem from="1640844437993" duration="5554000" />
       <workItem from="1640868222522" duration="8372000" />
-      <workItem from="1640876890984" duration="3301000" />
+      <workItem from="1640876890984" duration="4052000" />
+      <workItem from="1640928928295" duration="727000" />
     </task>
     <servers />
   </component>
