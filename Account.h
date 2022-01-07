@@ -13,11 +13,35 @@ using std::cout;
 using std::endl;
 using std::stack;
 
+struct User_Security{
+    bool flag;//表示是否已经创建了密保问题
+    char Question[64];
+    char Answer[64];
+    User_Security(){
+        flag = 0;
+        for(int i = 0; i < 64; ++i){
+            Question[i] = '\0';
+            Answer[i] = '\0';
+        }
+    }
+    User_Security(const string& tmp_Q, const string& tmp_A){
+        flag = 1;
+        strcpy(Question, tmp_Q.c_str());
+        strcpy(Answer, tmp_A.c_str());
+    }
+    User_Security& operator = (const User_Security& rhs){
+        flag = rhs.flag;
+        strcpy(Question, rhs.Question);
+        strcpy(Answer, rhs.Answer);
+    }
+};
+
 struct User_Account{
     char User_ID[32] = "";
     char User_Name[32] = "";
     char PassWord[32] = "";
     int Priority = 0; //默认为0
+    User_Security Security;
 
     User_Account() = default;
     User_Account(const string& tmp_ID, const string& tmp_PW, const int& tmp_p, const string tmp_name = ""){
@@ -26,7 +50,7 @@ struct User_Account{
         strcpy(PassWord, tmp_PW.c_str());
         Priority = tmp_p;
     }
-    User_Account operator = (const User_Account& rhs){
+    User_Account& operator = (const User_Account& rhs){
         strcpy(User_ID, rhs.User_ID);
         strcpy(User_Name, rhs.User_Name);
         strcpy(PassWord, rhs.PassWord);
@@ -65,6 +89,16 @@ public:
             Account_Index.Insert(Node("root", pos));
         }
     }
+    void Find_All_User(vector<string>& ans){
+        vector<int> index;
+        Account_Index.FindAll(index);
+        User_Account cur;
+        for(int i = 0; i < index.size(); ++i){
+            Account_Data.read(cur, index[i]);
+            if(cur.Priority >= 3)
+                ans.push_back(cur.User_ID);
+        }
+    }
     int Get_Now_Pri(){
         if(Log_Stack.empty()) return 0;
         return Log_Stack.back().user.Priority;
@@ -72,6 +106,10 @@ public:
     int Get_Now_ID(){
         if(Log_Stack.empty()) return 0;
         return Log_Stack.back().book_id;
+    }
+    string Get_Now_User(){
+        if(Log_Stack.empty()) return "";
+        return Log_Stack.back().user.User_ID;
     }
     void Change_ID(const int& tmp_ID){
         Log_Stack.back().book_id = tmp_ID;
@@ -206,6 +244,40 @@ public:
         }
         Account_Index.Delete(Node(tmp_ID, ans[0]));
         Account_Data.Delete(ans[0]);
+    }
+    void Security(const string& tmp_Q, const string& tmp_A){
+        string cur_id = Log_Stack.back().user.User_ID;
+        User_Account new_account;
+        vector<int> index;
+        Account_Index.Find(cur_id, index);
+        Account_Data.read(new_account, index[0]);
+        new_account.Security = User_Security(tmp_Q, tmp_A);
+        Account_Data.update(new_account, index[0]);
+    }
+    void Find(const string& tmp_ID){
+        vector<int> index;
+        Account_Index.Find(tmp_ID, index);
+        if(index.empty()){
+            cout << "Can not find the account! Make sure you have input the correct ID." << endl;
+            return;
+        }
+        User_Account tmp_account;
+        Account_Data.read(tmp_account, index[0]);
+        if(!tmp_account.Security.flag){
+            cout << "You haven't set a security. Please contact the administrator to change the password." << endl;
+            return;
+        }
+        cout << "Please answer the following security questions: " << endl;
+        cout << tmp_account.Security.Question << "?" << endl;
+        string tmp_A;
+        cin >> tmp_A;
+        if(tmp_A == tmp_account.Security.Answer){
+            cout << "Your answer is right! Your origin password: " << endl;
+            cout << tmp_account.PassWord << endl;
+        }
+        else{
+            cout << "Your answer is wrong!" << endl;
+        }
     }
 };
 

@@ -62,6 +62,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -115,6 +120,9 @@
       <workItem from="1640868222522" duration="8372000" />
       <workItem from="1640876890984" duration="4052000" />
       <workItem from="1640928928295" duration="5782000" />
+      <workItem from="1640935312433" duration="1011000" />
+      <workItem from="1641197988841" duration="658000" />
+      <workItem from="1641523835632" duration="8025000" />
     </task>
     <servers />
   </component>
@@ -128,10 +136,11 @@
         <watch expression="cmd.length()" language="ObjectiveC" />
         <watch expression="key" language="ObjectiveC" />
         <watch expression="str[i]" language="ObjectiveC" />
+        <watch expression="Log_Stack" language="ObjectiveC" />
       </configuration>
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="D:\周秉霖\Bookstore\cmake-build-debug-coverage" NAME="Bookstore Coverage Results" MODIFIED="1640529296767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="gcov/llvm" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="$PROJECT_DIR$/../../Bookstore/cmake-build-debug-coverage" NAME="Bookstore Coverage Results" MODIFIED="1640529296767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="gcov/llvm" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

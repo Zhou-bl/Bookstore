@@ -237,6 +237,13 @@ public:
         }
         return true;
     }
+    bool Check_Q_A(const string& str){
+        if(str.length() > 60) return false;
+        for(int i = 0; i < str.length(); ++i){
+            if(!isprint(str[i])) return false;
+        }
+        return true;
+    }
     bool Split_Index(const string& str, vector<string>& ans){
         string tmp = "";
         int pos;
@@ -264,10 +271,9 @@ public:
         }
         return false;//索引不对
     }
+
     void run(bool& flag){//解析完命令开始运行命令
         // #基础指令
-//        AccountSystem.Get_Size();
-
         if(Pars_Op.empty()){//仅有空白
             return;
         }
@@ -319,7 +325,10 @@ public:
             if(!Check_UserName(Pars_Op[3])){//姓名
                 throw Exception();
             }
+            string op;
+            for(int i = 0; i < Pars_Op.size(); ++i) op += Pars_Op[i], op += ' ';
             AccountSystem.Register(Pars_Op[1], Pars_Op[2], Pars_Op[3]);
+            LogSystem.add_op(AccountSystem.Get_Now_User(), op);
             return;
         }
         if(Pars_Op[0] == "passwd"){
@@ -344,6 +353,11 @@ public:
             }
             else{//需要密码
                 AccountSystem.Passwd(Pars_Op[1], Pars_Op[3], Pars_Op[2]);
+            }
+            if(AccountSystem.Get_Now_Pri() >= 3){
+                string op;
+                for(int i = 0; i < Pars_Op.size(); ++i) op += Pars_Op[i], op += ' ';
+                LogSystem.add_op(AccountSystem.Get_Now_User(), op);
             }
             return;
         }
@@ -370,7 +384,10 @@ public:
             for(int i = 0; i < Pars_Op[3].length(); ++i){
                 pri = pri * 10 + Pars_Op[3][i] - '0';
             }
+            string op;
+            for(int i = 0; i < Pars_Op.size(); ++i) op += Pars_Op[i], op += ' ';
             AccountSystem.Useradd(Pars_Op[1], Pars_Op[2], pri, Pars_Op[4]);
+            LogSystem.add_op(AccountSystem.Get_Now_User(), op);
             return;
         }
         if(Pars_Op[0] == "delete"){
@@ -383,10 +400,37 @@ public:
             if(!Check_Userid_and_Password(Pars_Op[1])){//id
                 throw Exception();
             }
+            string op;
+            for(int i = 0; i < Pars_Op.size(); ++i) op += Pars_Op[i], op += ' ';
             AccountSystem.Delete(Pars_Op[1]);
+            LogSystem.add_op(AccountSystem.Get_Now_User(), op);
             return;
         }
-
+        if(Pars_Op[0] == "security"){//为当前账户设置密保问题
+            //1
+            if(Pars_Op.size() != 3){
+                throw Exception();
+            }
+            if(AccountSystem.Get_Now_Pri() < 1){
+                throw Exception();
+            }
+            if(!Check_Q_A(Pars_Op[1]) || !Check_Q_A(Pars_Op[2])){
+                throw Exception();
+            }
+            AccountSystem.Security(Pars_Op[1], Pars_Op[2]);
+            return;
+        }
+        if(Pars_Op[0] == "find"){//找回密码
+            //0
+            if(Pars_Op.size() != 2){
+                throw Exception();
+            }
+            if(!Check_Userid_and_Password(Pars_Op[1])){
+                throw Exception();
+            }
+            AccountSystem.Find(Pars_Op[1]);
+            return;
+        }
         // #图书系统指令
         if(Pars_Op[0] == "show" && ( Pars_Op.size() == 1 || Pars_Op[1] != "finance")){
             if(Pars_Op.size() != 1 && Pars_Op.size() != 2){//格式
@@ -436,6 +480,11 @@ public:
             double tot;
             bool flag = BookSystem.Buy(AccountSystem, Pars_Op[1], num, tot);
             if(flag){
+                if(AccountSystem.Get_Now_Pri() >= 3){
+                    string op;
+                    for(int i = 0; i < Pars_Op.size(); ++i) op += Pars_Op[i], op += ' ';
+                    LogSystem.add_op(AccountSystem.Get_Now_User(), op);
+                }
                 LogSystem.add_finance(Pars_Op[0], tot);
             }
             return;
@@ -450,7 +499,10 @@ public:
             if(!Check_ISBN(Pars_Op[1])){//isbn
                 throw Exception();
             }
+            string op;
+            for(int i = 0; i < Pars_Op.size(); ++i) op += Pars_Op[i], op += ' ';
             BookSystem.Select(AccountSystem, Pars_Op[1]);
+            LogSystem.add_op(AccountSystem.Get_Now_User(), op);
             return;
         }
         if(Pars_Op[0] == "modify"){
@@ -479,10 +531,12 @@ public:
             if(!Check_Imf(vec)){//检查附加参数
                 throw Exception();
             }
-
             for(int i = 1; i < Pars_Op.size(); ++i){
                 BookSystem.Modify(AccountSystem, Pars_Op[i]);
             }
+            string op;
+            for(int i = 0; i < Pars_Op.size(); ++i) op += Pars_Op[i], op += ' ';
+            LogSystem.add_op(AccountSystem.Get_Now_User(), op);
             return;
         }
         if(Pars_Op[0] == "import"){
@@ -508,6 +562,9 @@ public:
             p = std::stod(Pars_Op[2]);
             bool flag = BookSystem.Import(AccountSystem, q, p);
             if(flag){
+                string op;
+                for(int i = 0; i < Pars_Op.size(); ++i) op += Pars_Op[i], op += ' ';
+                LogSystem.add_op(AccountSystem.Get_Now_User(), op);
                 LogSystem.add_finance(Pars_Op[0], p);
             }
             return;
@@ -527,7 +584,22 @@ public:
             else if(AccountSystem.Get_Now_Pri() < 7){
                 throw Exception();
             }
-            //todo
+            switch (Pars_Op[1][0]) {
+                case 'm' :{
+                    LogSystem.report_myself(AccountSystem.Get_Now_User());
+                    break;
+                }
+                case 'e' :{
+                    vector<string> user_id;
+                    AccountSystem.Find_All_User(user_id);
+                    LogSystem.report_employ(user_id);
+                    break;
+                }
+                case 'f' :{
+                    LogSystem.report_finance();
+                    break;
+                }
+            }
             return;
         }
         if(Pars_Op[0] == "show" && Pars_Op[1] == "finance"){
@@ -538,16 +610,15 @@ public:
                 throw Exception();
             }
             if(Pars_Op.size() == 2){
-                LogSystem.show(AccountSystem);
+                LogSystem.show_fin();
             }
             else{
                 if(!Check_Quantity(Pars_Op[2])){
                     throw Exception();
                 }
                 int t = std::stoi(Pars_Op[2]);
-                LogSystem.show(AccountSystem, t);
+                LogSystem.show_fin(t);
             }
-            //todo
             return;
         }
         if(Pars_Op[0] == "log"){
@@ -557,12 +628,13 @@ public:
             if(AccountSystem.Get_Now_Pri() < 7){
                 throw Exception();
             }
-            //todo
+            vector<string> user_id;
+            AccountSystem.Find_All_User(user_id);
+            LogSystem.log(user_id);
             return;
         }
         //仍然不返回说明指令不合法
-        cout << "Invalid\n";
-        return;
+        throw Exception();
     }
 };
 
